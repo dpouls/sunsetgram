@@ -26,9 +26,20 @@ massive(CONNECTION_STRING).then(db => {
 })
 
 //AUTH ENDPOINTS
-// app.post('/auth/login',ac.login)
-// app.post('/auth/logout', ac.logout);
+app.post('/auth/login', ac.login)
 app.post('/auth/register', ac.register);
+app.post('/auth/logout', ac.logout);
+app.get('/auth/currentuser', ac.currentUser)
+
+
+//POST ENDPOINTS
+
+app.get('/api/posts',pc.getAllPosts)
+app.get('/api/myposts/', pc.getMyPosts)
+app.put('/api/like/:post_id',pc.updateLikes)
+app.post('/api/add',pc.addPost)
+app.delete('/api/delete/:post_id', pc.deletePost)
+
 
 const port = SERVER_PORT || 7000;
 app.listen(port, () => console.log(gradient.instagram(`blazin on port ${port}`)))
