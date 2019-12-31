@@ -12,6 +12,7 @@ class Feed extends Component {
             posts: []
         }
     }
+ 
     componentDidMount = () =>{
         this.getPosts()
 

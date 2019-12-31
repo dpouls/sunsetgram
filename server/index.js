@@ -36,9 +36,14 @@ app.get('/auth/currentuser', ac.currentUser)
 
 app.get('/api/posts',pc.getAllPosts)
 app.get('/api/myposts/', pc.getMyPosts)
-app.put('/api/like/:post_id',pc.updateLikes)
 app.post('/api/add',pc.addPost)
 app.delete('/api/delete/:post_id', pc.deletePost)
+
+//LIKE ENDPOINTS
+app.put('/api/like/:post_id',pc.addLike)
+app.get('/api/likecount/:post_id', pc.getLikes)
+app.get('/api/likers/:post_id',pc.getLikers)
+app.delete('/api/unlike/:post_id', pc.unlike)
 
 
 const port = SERVER_PORT || 7000;

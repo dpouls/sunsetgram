@@ -17,7 +17,7 @@ function App(props) {
     console.log('useeffect hit')
     Axios.get('auth/currentuser')
     .then((res) => {
-      console.log('res.data',res.data)
+      // console.log('res.data',res.data)
       props.getUser(res.data)
     })
   },[props])

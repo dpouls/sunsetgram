@@ -12,15 +12,14 @@ class MyPosts extends Component {
     }
     deletePost = () => {
         Axios.delete(`/api/delete/${this.props.post.post_id}`)
-        .then(res => console.log(res.data))
-        this.props.getMyPostsFn()
+        .then(res => this.props.getMyPostsFn())
+        
     }
     render(){
         return(
             <div>
             <div>
             <img className='images' src={this.props.post.image_url} alt="sunset pic"/>
-            {/* <button onClick={()=> this.like(this.props.post.likes,this.props.post.post_id)}>♡</button> */}
             <p>{this.props.post.likes} Likes</p>
             <p>{this.props.post.caption}</p>
             <button onClick={this.deletePost}>x</button>
