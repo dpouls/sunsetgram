@@ -1,13 +1,17 @@
-.App {
+/* .App {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
+} */
 
- #title {
+ /* #title {
   font-family: 'Dancing Script', cursive;
   font-size: 140px;
+} */
+
+.likedHeart {
+  background-color: red;
 }
 /*
 #authContainer {

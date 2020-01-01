@@ -11,39 +11,7 @@ module.exports = {
         .then(posts => {res.status(200).send(posts)})
         .catch(err => res.status(500).send(err))
     },
-    addLike: (req, res) => {
-        const {post_id} = req.params
-        console.log('addlike post_id', post_id)
-        console.log(' add like hit, session:',req.session.user.id)
-
-        const db = req.app.get('db')
-        db.post.likes.like([req.session.user.id, +post_id])
-        .then(posts => {res.status(200).send(posts)})
-        .catch(err => console.log(err))
-    },
-    getLikers: (req, res) => {
-        const {post_id} = req.params
-        const db = req.app.get('db')
-        db.post.likes.get_likers(+post_id)
-        .then(likers => res.status(200).send(likers))
-        .catch(err => console.log(err))
-    },
-    getLikes: (req, res) => {
-        const {post_id} = req.params
-        const db = req.app.get('db')
-        db.post.likes.like_count(post_id)
-        .then(count => {res.status(200).send(count)})
-        .catch(err => console.log(err))
-    },
-
-    unlike: (req,res) => {
-        const {post_id} = req.params
-        console.log('j',req.params)
-        const db = req.app.get('db')
-        db.post.likes.unlike([req.session.user.id,post_id])
-        .then(likes => res.status(200).send(likes))
-        .catch(err => console.log(err))
-    },
+    
 
 
     addPost: (req, res) => {
@@ -52,6 +20,15 @@ module.exports = {
         const {image_url,caption} = req.body
         db.post.add_post([id,image_url,caption])
         .then(posts => {res.status(200).send(posts)})
+        .catch(err => console.log(err))
+    },
+    editPost: (req, res) => {
+        const {post_id} = req.params
+        const db = req.app.get('db')
+        const {caption} = req.body
+        console.log(caption)
+        db.post.edit_post([caption,post_id])
+        .then(post => res.status(200).send(post) )
         .catch(err => console.log(err))
     },
     deletePost: (req, res) => {

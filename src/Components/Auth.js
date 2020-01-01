@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {getUser} from '../redux/userReducer'
 // import { render } from '@testing-library/react';
 // import {Link} from 'react-router-dom'
-import './../App.css'
+import './../componentStyling/Auth.scss'
 
 class Auth extends Component {
     constructor(){
@@ -22,6 +22,9 @@ class Auth extends Component {
     }
     toggleRegister = () => {
         this.setState({toggleRegister: true})
+    }
+    toggleLogin = () => {
+        this.setState({toggleRegister: false})
     }
     handleRegister = () => {
         const {username, password} = this.state
@@ -49,6 +52,7 @@ class Auth extends Component {
             <h1 id='title'>Sunny</h1>
             {this.state.toggleRegister ? 
            ( <div id='authContainer'>
+               <div className='loginInputContainer'>
                  <input className='loginInputs'
                     maxLength='100'
                     placeholder='Create username'
@@ -61,24 +65,33 @@ class Auth extends Component {
                     placeholder='Create Password'
                     name='password'
                     onChange={(event) => this.handleInput(event)}/>
-                <button onClick={this.handleRegister}>Register</button>
+                    </div>
+                <button className='loginButton' onClick={this.handleRegister}>Register</button>
+                <p id='haveAccount' onClick={this.toggleLogin}>I already have an account.</p>
            </div> ) : (
             <div id='authContainer'>
+                <div className='loginInputContainer' >
                  <input 
                  className='loginInputs'
                     maxLength='100'
-                    placeholder='Enter Username'
+                    placeholder='Username'
                     name='username'
                     onChange={(event) => this.handleInput(event)}/>
                 <input
                 className='loginInputs'
                     type='password' 
                     maxLength='20'
-                    placeholder='Enter Password'
+                    placeholder='Password'
                     name='password'
                     onChange={(event) => this.handleInput(event)}/>
-                <button onClick={this.handleLogin}>Log In</button>
-                <button onClick={this.toggleRegister}>Register</button>
+                    </div>
+                <button className='loginButton' onClick={this.handleLogin}>Log In</button>
+                <section id='registerContainer'>
+                    <p>Don't have an account?</p>
+                <p id='signUp' onClick={this.toggleRegister}>Sign up.</p>
+                </section>
+                
+              
            </div>
            )
     }

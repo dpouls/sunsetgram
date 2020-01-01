@@ -2,6 +2,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import '../App.css'
+// import '../sass/styles.scss'
 
 const Footer = () => {
     return(
@@ -10,6 +11,7 @@ const Footer = () => {
             <Link to='/profile'>Profile </Link>
             <Link to='/addpost'>Add Post</Link>
         </div>
+   
     )
 }
 

@@ -6,6 +6,8 @@ const express = require('express'),
       session = require('express-session'),
       pc = require('./controllers/postController'),
       ac = require('./controllers/authController'),
+      cc = require('./controllers/commentController'),
+      lc = require('./controllers/likeController')
       gradient = require('gradient-string'),
       app = express();
 
@@ -38,12 +40,18 @@ app.get('/api/posts',pc.getAllPosts)
 app.get('/api/myposts/', pc.getMyPosts)
 app.post('/api/add',pc.addPost)
 app.delete('/api/delete/:post_id', pc.deletePost)
+app.put('/api/editpost/:post_id', pc.editPost)
 
 //LIKE ENDPOINTS
-app.put('/api/like/:post_id',pc.addLike)
-app.get('/api/likecount/:post_id', pc.getLikes)
-app.get('/api/likers/:post_id',pc.getLikers)
-app.delete('/api/unlike/:post_id', pc.unlike)
+app.post('/api/like/:post_id',lc.addLike)
+app.get('/api/likecount/:post_id', lc.getLikes)
+app.get('/api/likers/:post_id',lc.getLikers)
+app.delete('/api/unlike/:post_id', lc.unlike)
+
+//COMMENT ENDPOINTS
+app.get('/api/comments/:post_id',cc.getAllComments)
+app.post('/api/addcomment/:post_id', cc.addComment)
+app.delete('/api/deletecomment/:comment_id', cc.deleteComment)
 
 
 const port = SERVER_PORT || 7000;

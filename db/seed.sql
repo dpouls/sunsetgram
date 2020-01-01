@@ -39,3 +39,19 @@ user_id,
 post_id )
 values (
 3, 13)
+
+
+create table comments (
+    comment_id serial primary key,
+    post_id int references posts(post_id),
+    author_id int references users(id),
+    contents varchar(250)
+)
+
+insert into comments (
+post_id,
+author_id,
+contents
+) values (
+2,3,'user 3 comments a lot'
+)
