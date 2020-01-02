@@ -10,9 +10,7 @@
   font-size: 140px;
 } */
 
-.likedHeart {
-  background-color: red;
-}
+
 /*
 #authContainer {
   display: flex;
@@ -27,11 +25,11 @@
   height: 10%;
 
 } */
-.images {
+/* .images {
   width: 400px;
 }
 #footer_container {
   position: fixed;
   background-color: black;
   color: white;
-}
+} */

@@ -9,7 +9,7 @@ class MyPosts extends Component {
         super()
         this.state = {
             post: {},
-            likers: null,
+            likers: [],
             likeCount: '',
             likedHeart: false,
             comments: [],
@@ -34,7 +34,7 @@ class MyPosts extends Component {
 
     componentDidMount = async () => {
         console.log('props',this.props)
-        this.getLikes()
+        // this.getLikes()
         await this.getLikers()
        this.colorHearts()
        this.getAllComments()
@@ -43,13 +43,13 @@ class MyPosts extends Component {
    unlike = () => {
        console.log('unlike hit')
        Axios.delete(`/api/unlike/${this.props.post.post_id}`)
-       .then(res => this.getLikes())
+       .then(res => this.getLikers())
        this.setState({likedHeart: false})
    }
 
    like =  (post_id) => {
        console.log('like hit')
-       Axios.post(`/api/like/${this.props.post.post_id}`).then(res => this.getLikes())
+       Axios.post(`/api/like/${this.props.post.post_id}`).then(res => this.getLikers())
        this.setState({likedHeart: true})
    }
    likeHandler = async () => {
@@ -79,12 +79,12 @@ class MyPosts extends Component {
            this.setState({likedHeart: true})
        }
    }
-   getLikes = () => {
-       Axios.get(`/api/likecount/${this.props.post.post_id}`)
-       .then(res => this.setState({
-           likeCount: res.data[0].count
-       }))
-   }
+//    getLikes = () => {
+//        Axios.get(`/api/likecount/${this.props.post.post_id}`)
+//        .then(res => this.setState({
+//            likeCount: res.data[0].count
+//        }))
+//    }
 
    getAllComments = () => {
        Axios.get(`/api/comments/${this.props.post.post_id}`)
@@ -122,11 +122,11 @@ class MyPosts extends Component {
             <div>
             <img className='images' src={this.props.post.image_url} alt="sunset pic"/>
             <button className={this.state.likedHeart ? 'likedHeart': null} onClick={()=> this.likeHandler()}>♡</button>
-            {this.state.likeCount < 1 
+            {this.state.likers.length < 1 
                 ? null 
-                : +this.state.likeCount === 1 
-                    ? <p>{this.state.likeCount} Like</p> 
-                    : <p>{this.state.likeCount} Likes</p>}
+                : +this.state.likers.length === 1 
+                    ? <p>{this.state.likers.length} Like</p> 
+                    : <p>{this.state.likers.length} Likes</p>}
             <p>{this.props.post.caption}</p>
             <input 
             name='caption' 

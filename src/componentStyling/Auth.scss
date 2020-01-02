@@ -12,8 +12,7 @@
     align-items: center;
     height: 40vh;
     width: 100vw;
-    // border: 1px solid;
-    // box-shadow: 5px 5px 15px  grey;
+
     box-sizing: border-box;
   }
 
@@ -38,6 +37,11 @@
     // padding-left: 30px;
     padding: 8px;
     box-sizing: border-box;
+    transition: ease .5s;
+    &:focus {
+      // background-color: blue;
+      outline: none;
+    }
   }
   }
 
