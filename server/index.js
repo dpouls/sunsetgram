@@ -52,6 +52,7 @@ app.delete('/api/unlike/:post_id', lc.unlike)
 app.get('/api/comments/:post_id',cc.getAllComments)
 app.post('/api/addcomment/:post_id', cc.addComment)
 app.delete('/api/deletecomment/:comment_id', cc.deleteComment)
+app.put('/api/editcomment/:comment_id', cc.editComment)
 
 
 const port = SERVER_PORT || 7000;

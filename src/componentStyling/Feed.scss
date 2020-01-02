@@ -9,7 +9,7 @@
 #stories {
     background-color: rgb(207, 207, 207);
     height: 10vh;
-    margin-top: 7vh;
+    margin-top: 10vh;
     color: white;
     font-size: 15pt;
 }
@@ -21,12 +21,13 @@
     justify-content: center;
     display: flex;
     width: 100vw;
-    height: 7vh;
+    // height: 7vh;
     font-family: 'Dancing Script', cursive;
     font-size: 3em;
     font-weight: bold;
     color: black;
     background-color: white;
+    padding: 0px 0;
     
 }
 .feedPostContainer {

@@ -3,40 +3,73 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import "../componentStyling/Comments.scss";
 
-function Comments(props) {
-  const deleteComment = () => {
-    console.log(props);
+class Comments extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      editComment: false,
+      content: ''
+    }
+  }
+  editComment = () => {
+    Axios.put(`/api/editcomment/${this.props.thisComment.comment_id}`, {content: this.state.content})
+    .then( res => this.props.getCommentsFn())
+    .catch(err => console.log(err))
+    this.setState({editComment: false, content:''})
+  }
+
+  inputHandler = e => this.setState({ [e.target.name]: e.target.value });
+  toggleEditComment = () => this.setState({editComment: !this.state.editComment})
+
+   deleteComment = () => {
+    // console.log(props);
     Axios.delete(
-      `/api/deletecomment/${props.thisComment.comment_id}`
-    ).then(res => props.getCommentsFn());
+      `/api/deletecomment/${this.props.thisComment.comment_id}`
+    ).then(res => this.props.getCommentsFn());
   };
-  return (
-    <div id='eachComment'>
-      <p>
-        <strong>{props.thisComment.username}</strong> {props.thisComment.contents}
-      </p>
-      {props.thisComment.id === props.userReducer.user.id ||
-      props.thisPost.author_id === props.userReducer.user.id ? (
-        <div>
+  render(){
+    return (
+      <div id='eachComment'>
+        <p>
+          <strong>{this.props.thisComment.username}</strong>{' '}
+          {this.state.editComment
+          ?
+          <div id='editCommentInputButtonContainer'>
+            <input onChange={(e) => this.inputHandler(e)} type="text" placeholder='Insert new comment here...' name="content" value={this.state.content} className="addCommentInput"/>
+            <span onClick={() => this.editComment() } id='editCommentSubmit'>Post</span>
+          </div>
+          :
 
-            {props.commentMenu
-
-            ? <div className='commentButtons' id='commentMenu'>
+          this.props.thisComment.contents
+          
+          }
+          
+          
+        </p>
+        {this.props.thisComment.id === this.props.userReducer.user.id ||
+        this.props.thisPost.author_id === this.props.userReducer.user.id ? (
+          <div>
+  
+              {this.props.commentMenu
+  
+              ? <div className='commentButtons' id='commentMenu'>
+              
+                  <i className='commentButtons' onClick={() => this.toggleEditComment()} class="far fa-edit"></i>
+                  <i onClick={() => this.deleteComment()} className='commentButtons' class="fas fa-eraser" ></i>
+                  <i onClick={() => this.props.toggleCommentMenuFn()} class="fas fa-ellipsis-h"></i>
+                  </div>
+                  :
+                  <i onClick={() => this.props.toggleCommentMenuFn()} className="fas fa-ellipsis-h"></i>
+              }
             
-                <i className='commentButtons' class="far fa-edit"></i>
-                <i onClick={() => deleteComment()} className='commentButtons' className="fas fa-eraser"></i>
-                <i onClick={() => props.toggleCommentMenuFn()} class="fas fa-ellipsis-h"></i>
-                </div>
-                :
-                <i onClick={() => props.toggleCommentMenuFn()} class="fas fa-ellipsis-h"></i>
-            }
-          
-
-          
-        </div>
-      ) : null}
-    </div>
+  
+            
+          </div>
+        ) : null}
+      </div>
   );
+  }
+ 
 }
 const mapStateToProps = reduxState => {
   return reduxState;

@@ -21,5 +21,14 @@ module.exports = {
         db.post.comments.delete_comment(comment_id)
         .then(comments => res.sendStatus(200))
         .catch(err => console.log(err))
+    },
+    editComment: (req,res) => {
+        const {comment_id} = req.params
+        const {content} = req.body
+        console.log('editcomment body', req.body)
+        const db = req.app.get('db')
+        db.post.comments.edit_comment([content, comment_id])
+        .then(comment => res.status(200).send(comment))
+        .catch(err => console.log(err))
     }
 }
