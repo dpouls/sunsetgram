@@ -1,60 +1,91 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {getAllPosts} from './../redux/postReducer'
-import Axios from 'axios'
+import React, { Component, useState, useEffect } from "react";
 
-class TestFeed extends Component {
-    constructor() {
-        super () 
-        this.state = {
-            statePosts: []
+import { connect } from "react-redux";
+import { getAllPosts } from "./../redux/postReducer";
+import Axios from "axios";
+import "./../componentStyling/TestFeed.scss";
+
+// const TestFeedHook = props => {
+//   const [posts, setPosts] = useState([]);
+//   useEffect( () => {
+//         axios.get('/api/posts')
+//         .then(res => props.getAllPosts(res.data) )
+//           ;
+          
+//         // console.log('posts',posts)
+
+//   },[])
+
+//       console.log('this.props',props)
+//       return (
+//       <div>hello
+// {props.postReducer[0] && props.postReducer.map(el => {return (<div>test</div>)})}
+//       </div>
+
+
+//       )
+//     };
+
+    // setPosts( posts = res.data
+    //   // Axios.get("/api/posts").then(res => {
+    //   //   props.getAllPosts(res.data);
+    //   // posts = res.data
+    //   // }
+    
+    class TestFeed extends Component {
+            constructor() {
+                    super ()
+                    this.state = {
+            statePosts: [],
+            loading: false
         }
     }
      componentDidMount(){
         this.getPosts()
 
-        // console.log(this.props)
-    } 
-
+        console.log(this.props)
+    }
 
     getPosts = async () => {
         await Axios.get("/api/posts").then(res => {
-         this.setState( {statePosts: res.data} );
-          this.props.getAllPosts(res.data)
-        // console.log('hola',  res.data)
-        console.log('kevin', this.props.postReducer[0])
-        // console.log('state',this.state.statePosts[0].id)
-        // console.log(this.state.statePosts)
+                this.props.getAllPosts(res.data);
+        }
+        )
+    }
 
-        //   console.log('stateposts:',this.state.statePosts)
-        });
-        
-      };
+    
+
     render() {
-        // console.log('kevin', this.props.postReducer[0].post_id)
-    //    let test = this.props.postReducer.map((el)=> {
-        //     return <h1>{el.caption}</h1> 
-        // console.log('kevin', this.props.postReducer[0].caption)
-        //  })
-        return (
-            <div>Hi
-               {/* {this.props.postReducer} */}
-        {/* <p>{this.state.statePosts[0].caption}</p> */}
-        {/* {this.state.statePosts.map(el => {
-            return <div>test</div>
-        })} */}
-            </div>
+        console.log('kevin', this.props.postReducer[0] && this.props.postReducer[0].caption)
 
-        
+        return (
+            <div >Hi
+
+                {this.state.loading ? <h1>LOADING</h1> :
+                this.props.postReducer[0] && this.props.postReducer.map( el => {
+                    return (
+                    <div id='TFComponent'>
+                        <div>{el.username}</div>
+                        <img id="postImg" src={el.image_url} alt="sunset pic"/>
+
+                    </div>
+                    )
+                    }
+                    )
+                }
+
+                
+                
+                </div>
+
         )
     }
 }
 
-
-const mapStateToProps = reduxState => reduxState
+const mapStateToProps = reduxState => reduxState;
 // const mapStateToProps = state => {
 //    return {posts: state.postReducer}
 
 //   };
 
-export default connect(mapStateToProps,{getAllPosts})(TestFeed)
+export default connect(mapStateToProps, { getAllPosts })(TestFeed);
