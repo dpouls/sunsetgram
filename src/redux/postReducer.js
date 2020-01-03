@@ -1,7 +1,9 @@
 // import Axios from "axios"
+import * as reduxTest from './../reduxTest'
 
 const initialState = {
-    posts: []
+    posts: [],
+    loading: false
 }
 
 const GET_POSTS = 'GET_POSTS'
@@ -13,15 +15,11 @@ const GET_POSTS_FULFILLED = 'GET_POSTS_FULFILLED'
 
 
 
-
-export function getAllPosts(postArr){
-
-
-    
+export function getAllPosts(){
     // console.log('postArr', postArr)
     return {
         type: GET_POSTS,
-        payload: postArr
+        payload: reduxTest.getAllPosts()
     }
 }
 
@@ -32,7 +30,7 @@ export default function postReducer(state = initialState, action){
         case GET_POSTS_PENDING:
             return Object.assign({}, state, {loading: true})
         case GET_POSTS_FULFILLED:
-            return Object.assign({}, state, {loading: false})
+            return Object.assign({}, state, {loading: false, posts: payload})
 
         case GET_POSTS:
             return [...payload]

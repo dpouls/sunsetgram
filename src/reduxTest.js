@@ -1,9 +1,8 @@
 import axios from 'axios'
 
-export const getThePeople = function () {
+export const getAllPosts = function () {
     return axios.get('/api/posts')
-    .then(res => console.log('resdata',res.data))
-    // console.log(res.data)
+    .then(res => res.data)
+    
 }
 
-getThePeople()

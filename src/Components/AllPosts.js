@@ -21,6 +21,9 @@ class AllPosts extends Component {
       editPost: false
     };
   }
+ 
+
+
   editPost = async () => {
     await Axios.put(`/api/editpost/${this.props.post.post_id}`, {
       caption: this.state.caption
@@ -45,6 +48,7 @@ class AllPosts extends Component {
     await this.getLikers();
     this.colorHearts();
     this.getAllComments();
+    // console.log('feed props',this.props)
   };
 
 

@@ -26,66 +26,51 @@ import "./../componentStyling/TestFeed.scss";
 //       )
 //     };
 
-    // setPosts( posts = res.data
-    //   // Axios.get("/api/posts").then(res => {
-    //   //   props.getAllPosts(res.data);
-    //   // posts = res.data
-    //   // }
     
     class TestFeed extends Component {
             constructor() {
                     super ()
                     this.state = {
-            statePosts: [],
-            loading: false
+            statePosts: []
+            // loading: false
         }
     }
      componentDidMount(){
-        this.getPosts()
+        // this.getPosts()
+        this.props.getAllPosts()
 
-        console.log(this.props)
+        console.log('this.props',this.props)
     }
 
-    getPosts = async () => {
-        await Axios.get("/api/posts").then(res => {
-                this.props.getAllPosts(res.data);
-        }
-        )
+    logger(){
+        console.log('this.props logger',this.props)
     }
-
-    
 
     render() {
-        console.log('kevin', this.props.postReducer[0] && this.props.postReducer[0].caption)
 
+
+        const postsFromRedux = this.props.posts.map((el,i) => {
+        return <div key={i}>{this.props.loading}{el.caption}</div>
+        })
         return (
             <div >Hi
-
-                {this.state.loading ? <h1>LOADING</h1> :
-                this.props.postReducer[0] && this.props.postReducer.map( el => {
-                    return (
-                    <div id='TFComponent'>
-                        <div>{el.username}</div>
-                        <img id="postImg" src={el.image_url} alt="sunset pic"/>
-
-                    </div>
-                    )
-                    }
-                    )
-                }
-
-                
-                
+                <button onClick={this.props.getAllPosts}>GET POSTS</button>
+                <button onClick={() => this.logger()}>log props</button>
+                {postsFromRedux}
+                Loading: {this.props.loading ? 'its loading...' : 'done'}
+                {this.props.loading ? 'getting captions' : postsFromRedux }
                 </div>
 
         )
     }
 }
 
-const mapStateToProps = reduxState => reduxState;
-// const mapStateToProps = state => {
-//    return {posts: state.postReducer}
+// const mapStateToProps = reduxState => reduxState;
+const mapStateToProps = state => {
+   return {posts: state.postReducer.posts,
+           loading: state.postReducer.loading
+        }
 
-//   };
+  };
 
 export default connect(mapStateToProps, { getAllPosts })(TestFeed);
