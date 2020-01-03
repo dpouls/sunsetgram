@@ -8,4 +8,6 @@ const rootReducer = combineReducers({
     postReducer
 })
 
+
+
 export default createStore(rootReducer)

@@ -5,6 +5,7 @@ import './../componentStyling/AddPost.scss'
 
 
 
+
  class AddPost extends React.Component {
     constructor(){
         super()
@@ -29,11 +30,13 @@ import './../componentStyling/AddPost.scss'
     }
     addPost = () => {
         const {image_url,caption} = this.state
+        if(this.state.image_url !== ''){
         Axios.post(`/api/add`,{image_url,caption})
         .then(res => {
             this.props.history.push('/profile')
         })
         .catch(err => console.log(err))
+    }
     }
     imgWatcher = () => {
         if (this.state.image_url !== ''){
@@ -49,7 +52,7 @@ import './../componentStyling/AddPost.scss'
             ?
             <div id='imgPlaceholder'>Image will appear here</div>
             : */}
-            <img src={this.state.image_url} alt=""/>
+            <img id='imgPreview' src={this.state.image_url} alt=""/>
             
             {/*  */}
 
@@ -62,6 +65,7 @@ import './../componentStyling/AddPost.scss'
              name='image_url' 
              placeholder='Image URL goes here' 
              type="text"
+             
              onChange={(event) => this.handleInput(event)}/>
             <input 
             className='inputs'

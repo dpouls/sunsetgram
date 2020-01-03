@@ -17,7 +17,7 @@ class Feed extends Component {
   getPosts = () => {
     Axios.get("/api/posts").then(res => {
       this.setState({ posts: res.data });
-      console.log("getposts hit");
+      console.log("getposts hit",this.state.posts[0].caption);
     });
   };
   render() {

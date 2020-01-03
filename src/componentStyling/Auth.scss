@@ -58,6 +58,9 @@
       &:hover {
         background-color: rgb(53, 152, 233)
       }
+      &:focus {
+        outline: none;
+      }
   }
  
   #registerContainer {

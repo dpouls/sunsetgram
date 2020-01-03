@@ -148,7 +148,7 @@ class AllPosts extends Component {
           <div className="postHeaderUserInfoContainer">
             <img
               className="postHeaderPic"
-              src="https://robohash.org/rob?set=set5"
+              src={`https://robohash.org/${this.props.post.id}?set=set5`}
               alt=""
             />
             <p>{this.props.post.username}</p>
