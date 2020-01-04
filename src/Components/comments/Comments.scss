@@ -1,0 +1,27 @@
+#eachComment {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding: 0 4vw;
+    // border: 1px solid blue;
+    box-sizing: border-box;
+}
+
+#commentMenu {
+   display: flex;
+   justify-content: space-between;
+//    border: 1px solid;
+   width: 20vw;
+}
+.commentButtons {
+    margin: 0 10px;
+}
+
+#editCommentSubmit {
+    color: #3599E9;
+
+}
+
+#editCommentInputButtonContainer {
+    display: flex;
+}

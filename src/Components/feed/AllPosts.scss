@@ -1,0 +1,151 @@
+.wholePostContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // align-content: center;
+    width: 100%;
+}
+
+.images {
+    width: 100%;
+}
+.postHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4%;
+    font-size: 15pt;
+}
+.postHeaderUserInfoContainer {
+    display: flex;
+    font-size: 15pt;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+}
+.postHeaderPic {
+    height: 4vh;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin: 10px 20px 10px 0;
+    border: 1px solid;
+}
+.postMenu{
+    // border: 1px solid;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+// .postMenuButtons {
+//     // margin: 0 36px;
+// }
+.likeCommentSendSaveContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    font-size: 25pt;
+    font-weight: 100;
+}
+
+#commentIcon{
+    margin:0px 15px;
+    // transform: scaleX(-1);
+    // z-index: 0;
+}
+#likedHeart {
+    color: red
+}
+#unlikedHeart {
+    color: black
+}
+#likeDisplay {
+    display: flex;
+    font-size: 15pt;
+    font-weight: bold;
+    // border: 1px solid;
+    padding-left: 2%;
+}
+p {
+    margin: 0;
+    text-decoration: none;
+}
+#captionContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 4%;
+    font-size: 15pt;
+    // border: 1px solid red;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+
+
+}
+#captionEditSubmit {
+    color: #3599E9;
+}
+
+#caption {
+    // word-wrap: break-word;
+    // border: 1px solid green;
+    width: 100%;
+    // text-align: left;
+}
+
+#allCommentsContainer {
+    display: flex;
+    flex-direction: column;
+    
+    text-align: left;
+    // padding-left: 30px;
+    font-size: 15pt;
+    // border: 1px solid red;
+    width: 98%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    margin-bottom: 4%;
+
+}
+#viewComments {
+    padding-left: 4%;
+    font-size: 15pt;
+    text-align: left;
+    margin-bottom: 4%;
+}
+
+#addCommentContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    // border: 1px solid red;
+    padding-left: 4%;
+    box-sizing: border-box;
+    font-size: 15pt;
+}
+
+.addCommentInput{
+    border-radius: 10px;
+    background-color: none;
+    border: none;
+    padding: 5px;
+    font-size: 15pt;
+    transition: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+#addCommentButton {
+    border-radius: 10px;
+    // border: 1px solid;
+    color: #3599E9;
+}
+
+.eraserboi {
+    // color: red;
+}
+
