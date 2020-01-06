@@ -122,7 +122,7 @@ editPost = async () => {
     if (this.props.post.caption !== prevProps.post.caption) {
       this.props.getMyPostsFn();
     }
-    console.log("cdu hit");
+    // console.log("cdu hit");
   };
   componentDidMount = async () => {
     await this.getLikers();

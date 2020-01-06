@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 
 
 import {withRouter} from 'react-router-dom'
-import Footer from './Components/Footer'
+import Footer from './Components/footer/Footer'
 import Axios from 'axios';
 
 

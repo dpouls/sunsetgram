@@ -7,15 +7,15 @@ const EditProfile = (props) => {
     const [userInfo, setUserInfo] = useState([])
     const [imgUrl, setImgURL] = useState([])
     useEffect(() => {
-        console.log('imgurl',imgUrl)
-        console.log('editprofile props', props)
+        // console.log('imgurl',imgUrl)
+        console.log('editprofile props.userreducer.user', props.userReducer.user)
     },
-    [imgUrl,props.userReducer.user]
+    [props.userReducer.user]
     )
     const handleSubmit = (e) => {
         // e.preventDefault()
         Axios.put('/api/editprofile',{imgUrl})
-        .then(async (res) => await props.getUser(res.data[0]))
+        .then( (res) => props.getUser(res.data[0]))
         // console.log(res.data)
         
     }

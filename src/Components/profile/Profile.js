@@ -19,6 +19,7 @@ class Profile extends Component {
   };
   componentDidUpdate=(prevProps,prevState) => {
     if(prevProps !== this.props){
+      this.getMyPosts()
       console.log('profile cdu','props are:',this.props)
     }
   }
@@ -38,7 +39,7 @@ class Profile extends Component {
       .catch(err => console.log("logout err", err));
   };
   render() {
-    console.log('state myposts',this.state.myPosts)
+    // console.log('state myposts',this.state.myPosts)
     return (
       <div id='wholeProfile'>
          

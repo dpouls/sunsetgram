@@ -18,7 +18,8 @@ module.exports = {
         const db = req.app.get('db')
         const {id} = req.session.user
         const {image_url,caption} = req.body
-        db.post.add_post([id,image_url,caption])
+        const newDate = new Date()
+        db.post.add_post([id,image_url,caption,newDate])
         .then(posts => {res.status(200).send(posts)})
         .catch(err => console.log(err))
     },
@@ -26,7 +27,9 @@ module.exports = {
         const {post_id} = req.params
         const db = req.app.get('db')
         const {caption} = req.body
-        console.log(caption)
+        // console.log(new Date())
+
+        // console.log(caption)
         db.post.edit_post([caption,post_id])
         .then(post => res.status(200).send(post) )
         .catch(err => console.log(err))

@@ -7,7 +7,8 @@ const express = require('express'),
       pc = require('./controllers/postController'),
       ac = require('./controllers/authController'),
       cc = require('./controllers/commentController'),
-      lc = require('./controllers/likeController')
+      lc = require('./controllers/likeController'),
+      uc = require('./controllers/userController')
       gradient = require('gradient-string'),
       app = express();
 
@@ -33,6 +34,10 @@ app.post('/auth/register', ac.register);
 app.post('/auth/logout', ac.logout);
 app.get('/auth/currentuser', ac.currentUser)
 
+
+//USER INFO ENDPOINTS
+
+app.put('/api/editprofile', uc.editProfilePic)
 
 //POST ENDPOINTS
 

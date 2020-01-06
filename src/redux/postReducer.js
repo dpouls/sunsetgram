@@ -25,7 +25,7 @@ export function getAllPosts(){
 
 export default function postReducer(state = initialState, action){
     const {type, payload} = action
-    console.log('PR payload',payload)
+    // console.log('PR payload',payload)
     switch(type){
         case GET_POSTS_PENDING:
             return Object.assign({}, state, {loading: true})

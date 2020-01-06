@@ -1,10 +1,10 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import Auth from './Components/Auth'
-import Feed from './Components/Feed'
-import TestFeed from './Components/TestFeed'
-import Profile from './Components/Profile'
-import AddPost from './Components/AddPost'
+import Auth from './Components/auth/Auth'
+import Feed from './Components/feed/Feed'
+import TestFeed from './Components/practice/TestFeed'
+import Profile from './Components/profile/Profile'
+import AddPost from './Components/addPost/AddPost'
 
 
 export default (
