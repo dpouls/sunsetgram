@@ -55,3 +55,16 @@ contents
 ) values (
 2,3,'user 3 comments a lot'
 )
+
+create table followers (
+follow_id serial primary key,
+follower_id int references users(id),
+followed_id int references users(id)
+)
+
+insert into followers (
+follower_id,
+followed_id
+) values (
+1,3
+)

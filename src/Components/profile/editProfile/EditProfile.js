@@ -5,29 +5,37 @@ import Axios from 'axios'
 
 const EditProfile = (props) => {
     const [userInfo, setUserInfo] = useState([])
-    const [imgUrl, setImgURL] = useState([])
+    const [imgUrl, setImgURL] = useState('')
     useEffect(() => {
-        // console.log('imgurl',imgUrl)
-        console.log('editprofile props.userreducer.user', props.userReducer.user)
+        console.log('imgurl',imgUrl)
     },
-    [props.userReducer.user]
+    [imgUrl]
     )
-    const handleSubmit = (e) => {
-        // e.preventDefault()
-        Axios.put('/api/editprofile',{imgUrl})
-        .then( (res) => props.getUser(res.data[0]))
-        // console.log(res.data)
+    const handleSubmit = async () => {
+        console.log('hit')
+       let res =  await Axios.put('/api/editprofile',{imgUrl})
+       
+           console.log(res.data[0])
+
+          await  props.getUser(res.data[0])
+
+          setImgURL('')
+
+           console.log(props)
         
+      
     }
+    // console.log('props', props)
     return (
-        <form onSubmit={handleSubmit}>
+    <form >
         <input type="file"/>
         <input 
         onChange={e => setImgURL(e.target.value)}
         name={imgUrl}
+        value={imgUrl}
         type="text"
         />
-        <button onClick={() => handleSubmit()}></button>
+        <button type='button' onClick={() => handleSubmit()}>O</button>
 
         </form>
 

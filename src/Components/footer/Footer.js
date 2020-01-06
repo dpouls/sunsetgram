@@ -11,7 +11,7 @@ const Footer = (props) => {
             <Link to='/feed'><i className="fas fa-home"></i></Link>
             <Link to='/TestFeed'><i className="fas fa-hotdog"></i></Link>
             <Link to='/addpost'><i className="far fa-plus-square"></i></Link>
-            <Link to='/profile'><img id='footerPic' src={`https://robohash.org/${props.userReducer.user.id}?set=set5`} alt="profile pic"/> </Link>
+            <Link to='/profile'><img id='footerPic' src={props.userReducer.user.profile_img} alt="profile pic"/> </Link>
         </div>
    
     )

@@ -42,7 +42,7 @@ class AllPosts extends Component {
     if (this.props.post.caption !== prevProps.post.caption) {
       this.props.getPostsFn();
     }
-    console.log("cdu hit");
+    // console.log("cdu hit");
   };
   componentDidMount = async () => {
     await this.getLikers();
@@ -152,7 +152,7 @@ class AllPosts extends Component {
           <div className="postHeaderUserInfoContainer">
             <img
               className="postHeaderPic"
-              src={`https://robohash.org/${this.props.post.id}?set=set5`}
+              src={this.props.post.profile_img}
               alt=""
             />
             <p>{this.props.post.username}</p>

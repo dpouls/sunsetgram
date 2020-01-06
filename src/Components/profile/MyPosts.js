@@ -227,7 +227,7 @@ editPost = async () => {
           <div className="postHeaderUserInfoContainer">
             <img
               className="postHeaderPic"
-              src={`https://robohash.org/${this.props.post.id}?set=set5`}
+              src={this.props.userReducer.user.profile_img}
               alt=""
             />
             <p>{this.props.post.username}</p>

@@ -10,19 +10,26 @@ class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      myPosts: []
+      myPosts: [],
+      // profile_img: ''
     };
   }
-  componentDidMount = () => {
+  componentDidMount(){
     this.getMyPosts();
-    console.log('profile props',this.props)
+    // console.log('profile props.userReducer',this.props.userReducer)
+    // await this.setState({profile_img: this.props.userReducer.user.profile_img})
+   
   };
-  componentDidUpdate=(prevProps,prevState) => {
-    if(prevProps !== this.props){
-      this.getMyPosts()
-      console.log('profile cdu','props are:',this.props)
-    }
-  }
+  // componentDidUpdate=(prevProps,prevState) => {
+  //   if(prevProps !== this.props){
+  //     this.getMyPosts()
+  //     // console.log('profile cdu','props.userReducer:',this.props.userReducer)
+  //   }
+  //   // if (prevState.profile_img !== this.state.profile_img){
+  //   //   console.log('different')
+     
+  //   // }
+  // }
   getMyPosts = () => {
     Axios.get(`/api/myposts`)
       .then(res => {
@@ -39,6 +46,7 @@ class Profile extends Component {
       .catch(err => console.log("logout err", err));
   };
   render() {
+    // console.log('profile this.props', this.props.userReducer.user)
     // console.log('state myposts',this.state.myPosts)
     return (
       <div id='wholeProfile'>

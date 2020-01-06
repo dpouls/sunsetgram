@@ -6,6 +6,8 @@ const GET_USER = 'GET_USER'
 const LOGOUT = "LOGOUT"
 
 export function getUser(userObj){
+
+    console.log('UR getUser hit', userObj)
     
     return { 
         type: GET_USER,

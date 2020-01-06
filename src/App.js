@@ -11,13 +11,14 @@ import Axios from 'axios';
 
 
 function App(props) {
+  console.log('props',props)
   useEffect(() => {
-    console.log('useeffect hit')
-    Axios.get('auth/currentuser')
+    console.log('useeffect hit', props)
+    Axios.get('/auth/currentuser')
     .then((res) => {
       props.getUser(res.data)
     })
-  },[props])
+  },[])
   return (
     <div className="App">
       {props.location.pathname === '/' ? (
@@ -34,5 +35,7 @@ function App(props) {
     </div>
   );
 }
-
+// const mapStateToProps = reduxState => {
+//   return reduxState;
+// };
 export default withRouter(connect(null,{getUser}) (App) );
