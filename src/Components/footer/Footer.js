@@ -9,7 +9,7 @@ const Footer = (props) => {
         <div id='footer_container'>
        
             <Link to='/following'><i className="fas fa-home"></i></Link>
-            <Link to='/feed'><i class="fas fa-search"></i></Link>
+            <Link to='/discover'><i class="fas fa-search"></i></Link>
             <Link to='/addpost'><i className="far fa-plus-square"></i></Link>
             <Link to='/profile'><img id='footerPic' src={props.userReducer.user.profile_img} alt="profile pic"/> </Link>
         </div>
