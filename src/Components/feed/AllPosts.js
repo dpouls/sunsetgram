@@ -241,7 +241,7 @@ class AllPosts extends Component {
 
         <section id="captionContainer">
           <section id="caption">
-            <strong>{this.props.post.username}</strong>{" "}
+            <strong onClick={() => {this.goToProfile()}}>{this.props.post.username}</strong>{" "}
             {this.state.editPost ? (
               <div>
                 {" "}

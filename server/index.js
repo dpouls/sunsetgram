@@ -11,6 +11,7 @@ const express = require('express'),
       uc = require('./controllers/userController'),
       fc = require('./controllers/followerController'),
       sc = require('./controllers/specificController'),
+      folC = require('./controllers/followingController'),
       gradient = require('gradient-string'),
       app = express();
 
@@ -58,6 +59,9 @@ app.get('/api/myposts/', pc.getMyPosts)
 app.post('/api/add',pc.addPost)
 app.delete('/api/delete/:post_id', pc.deletePost)
 app.put('/api/editpost/:post_id', pc.editPost)
+
+//FOLLOWING POSTS
+app.get('/api/followingposts',folC.getFollowingPosts)
 
 //LIKE ENDPOINTS
 app.post('/api/like/:post_id',lc.addLike)

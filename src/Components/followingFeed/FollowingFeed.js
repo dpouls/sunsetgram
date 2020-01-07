@@ -11,16 +11,16 @@ class FollowingFeed extends Component {
     };
   }
 
-  // componentDidMount = () => {
-  //   this.getPosts();
-  // };
-  // getPosts = () => {
-  //   Axios.get("/api/posts").then(res => {
-  //     this.setState({ posts: res.data });
-  //     console.log("getposts hit",this.state.posts[0].caption);
-  //   });
-  // };
-  
+  componentDidMount = () => {
+    this.getPosts();
+  };
+  getPosts = () => {
+    Axios.get("/api/followingposts").then(res => {
+      this.setState({ posts: res.data });
+      console.log("getposts hit",this.state.posts[0].caption);
+    });
+  };
+
   render() {
     const { posts } = this.state;
     return (

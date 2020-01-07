@@ -28,7 +28,7 @@ class Auth extends Component {
         const {username, password} = this.state
         Axios.post('/auth/register', {username, password}).then(res => {
             this.props.getUser(res.data)
-            this.props.history.push('/feed')
+            this.props.history.push('/following')
         })
         .catch(err => console.log(err))
     }
@@ -37,7 +37,7 @@ class Auth extends Component {
     handleLogin = () => {
         Axios.post('/auth/login', {username: this.state.username, password: this.state.password}).then(res => {
             this.props.getUser(res.data)
-            this.props.history.push('/feed')
+            this.props.history.push('/following')
             // alert(res.data)
             // console.log('res',res.data)
         }
