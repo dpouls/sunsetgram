@@ -10,6 +10,7 @@ const express = require('express'),
       lc = require('./controllers/likeController'),
       uc = require('./controllers/userController'),
       fc = require('./controllers/followerController'),
+      sc = require('./controllers/specificController'),
       gradient = require('gradient-string'),
       app = express();
 
@@ -40,8 +41,16 @@ app.get('/auth/currentuser', ac.currentUser)
 
 app.put('/api/editprofile', uc.editProfilePic)
 app.post('/api/follow', fc.follow)
+app.post('/api/unfollow', fc.unfollow)
 app.get('/api/getfollowers', fc.getFollowers)
 app.get('/api/getfollowing', fc.getFollowing)
+
+//SPECIFIC PROFILE ENDPOINTS
+app.get('/api/specificuserinfo/:id',sc.getSpecificUserInfo)
+app.get('/api/getspecificfollowers/:id', fc.getSpecificUserFollowers)
+app.get('/api/getspecificfollowing/:id', fc.getSpecificUserFollowing)
+
+
 //POST ENDPOINTS
 
 app.get('/api/posts',pc.getAllPosts)

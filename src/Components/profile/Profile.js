@@ -11,25 +11,28 @@ class Profile extends Component {
     super();
     this.state = {
       myPosts: [],
-      // profile_img: ''
+      followers: [],
+      following: []
     };
   }
   componentDidMount(){
     this.getMyPosts();
-    // console.log('profile props.userReducer',this.props.userReducer)
-    // await this.setState({profile_img: this.props.userReducer.user.profile_img})
+    this.getFollowers();
+    this.getFollowing();
+
    
   };
-  // componentDidUpdate=(prevProps,prevState) => {
-  //   if(prevProps !== this.props){
-  //     this.getMyPosts()
-  //     // console.log('profile cdu','props.userReducer:',this.props.userReducer)
-  //   }
-  //   // if (prevState.profile_img !== this.state.profile_img){
-  //   //   console.log('different')
-     
-  //   // }
-  // }
+  getFollowers = () => {
+    Axios.get('/api/getfollowers',{id: this.props.userReducer.user.id})
+    .then( res => this.setState({followers: res.data}))
+    .catch(err => console.log(err))
+  }
+  getFollowing= () => {
+    Axios.get('/api/getfollowing',{id: this.props.userReducer.user.id})
+    .then( res => this.setState({following: res.data}))
+    .catch(err => console.log(err))
+  }
+
   getMyPosts = () => {
     Axios.get(`/api/myposts`)
       .then(res => {
@@ -46,8 +49,7 @@ class Profile extends Component {
       .catch(err => console.log("logout err", err));
   };
   render() {
-    // console.log('profile this.props', this.props.userReducer.user)
-    // console.log('state myposts',this.state.myPosts)
+
     return (
       <div id='wholeProfile'>
          
@@ -63,8 +65,8 @@ class Profile extends Component {
             
             {/* <p>{this.state.myPosts.length} Posts</p> */}
             <section><p>{this.state.myPosts.length}</p><p className='statsWords'>Posts</p></section>
-            <section><p>900</p><p className='statsWords'>Followers</p></section>
-            <section><p>800</p><p className='statsWords'>Following</p></section>
+            <section><section>{this.state.followers.length}</section><p className='statsWords'>Followers</p></section>
+            <section><section>{this.state.following.length}</section><p className='statsWords'>Following</p></section>
             
           </section>
         </section>

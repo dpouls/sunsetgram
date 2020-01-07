@@ -1,0 +1,1 @@
+delete from followers where follower_id = ($1) and followed_id = ($2)

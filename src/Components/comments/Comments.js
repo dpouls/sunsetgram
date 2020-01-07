@@ -22,7 +22,6 @@ class Comments extends React.Component {
   toggleEditComment = () => this.setState({editComment: !this.state.editComment})
 
    deleteComment = () => {
-    // console.log(props);
     Axios.delete(
       `/api/deletecomment/${this.props.thisComment.comment_id}`
     ).then(res => this.props.getCommentsFn());
