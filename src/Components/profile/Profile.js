@@ -12,7 +12,8 @@ class Profile extends Component {
     this.state = {
       myPosts: [],
       followers: [],
-      following: []
+      following: [],
+      editProfile: false
     };
   }
   componentDidMount(){
@@ -48,6 +49,9 @@ class Profile extends Component {
       })
       .catch(err => console.log("logout err", err));
   };
+  toggleEdit = () => {
+    this.setState({editProfile: !this.state.editProfile})
+  }
   render() {
 
     return (
@@ -71,11 +75,16 @@ class Profile extends Component {
           </section>
         </section>
         <section id='editProfileButtonContainer'>
-        <button id='editProfileButton'>Edit Profile</button>
-        </section>
-        <div>
+        <button onClick={() => this.toggleEdit()} id='editProfileButton'>Edit Profile</button>
+        {this.state.editProfile ? 
+        <div id='editContainer'>
+          <div>New Image URL: </div>
           <EditProfile />
         </div>
+        : null
+      }
+      </section>
+        
 
 
 

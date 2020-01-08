@@ -23,8 +23,16 @@ const getPosts = () => {
   };
     return (
       <div id='discoverPageContainer'> 
-        <div id="DiscoverHeaderContainer">
-          <div id='searchBar'>Search Bar</div>
+      
+        <div id="searchContainer">
+            <div>
+                <i id='searchGlass' class="fa fa-search"></i>
+          <input  
+          placeholder='Search'
+          id='searchBar' 
+          type="search"/>
+            </div>
+        
         </div>
 
         <div className="gallery">

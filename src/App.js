@@ -20,6 +20,7 @@ function App(props) {
     })
   },[])
   return (
+    <div id='wholeThing'>
     <div className="App">
       {props.location.pathname === '/' ? (
         <>
@@ -32,6 +33,7 @@ function App(props) {
         </>
       )
 }
+    </div>
     </div>
   );
 }

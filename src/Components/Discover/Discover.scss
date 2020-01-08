@@ -11,3 +11,33 @@
     grid-auto-rows: 33vw;
     grid-gap: 2px;
 }
+
+#searchContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: grey;
+    font-size: 15pt;
+    padding: 2%;
+    // height: 7vh;
+}
+
+#searchBar {
+    width: 80%;
+    height: 5vh;
+    border-radius: 10px;
+    font-size: 15pt;
+    color: grey;
+    padding: 0 5% 0 12%;
+
+    &:focus {
+        outline: none;
+      }
+}
+
+#searchGlass {
+    position: relative;
+    left: 30px;
+}

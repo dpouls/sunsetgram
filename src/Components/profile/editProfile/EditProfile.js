@@ -28,14 +28,13 @@ const EditProfile = (props) => {
     // console.log('props', props)
     return (
     <form >
-        <input type="file"/>
         <input 
         onChange={e => setImgURL(e.target.value)}
         name={imgUrl}
         value={imgUrl}
         type="text"
         />
-        <button type='button' onClick={() => handleSubmit()}>O</button>
+        <button type='button' onClick={() => handleSubmit()}>Change</button>
 
         </form>
 

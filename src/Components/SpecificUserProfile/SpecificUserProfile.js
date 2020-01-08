@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Axios from "axios";
 import SpecificUserPosts from "./SpecificUserPosts";
 import { connect } from "react-redux";
+import '../profile/Profile.scss'
+import '../profile/MyPosts.scss'
 
 class SpecificUserProfile extends Component {
   constructor() {
@@ -109,11 +111,11 @@ class SpecificUserProfile extends Component {
         </section>
         <section id="followButtonContainer">
           {this.state.followed ? (
-            <button onClick={() => this.unfollow()} id="unfollowButton">
+            <button id='followButton' onClick={() => this.unfollow()} id="unfollowButton">
               Unfollow
             </button>
           ) : (
-            <button onClick={() => this.follow()} id="followButton">
+            <button id='followButton' onClick={() => this.follow()} id="followButton">
               Follow
             </button>
           )}

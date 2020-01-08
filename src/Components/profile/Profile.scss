@@ -1,5 +1,5 @@
 #wholeProfile {
-    width: 100vw;
+    width: 100%;
 }
 #profileHeader {
     display: flex;
@@ -8,7 +8,7 @@
     align-items: center;
     box-sizing: border-box;
     text-align: center;
-    width: 100vw;
+    width: 100%;
     font-size: 18pt;
 }
 
@@ -56,15 +56,63 @@
 
 // }
 
-
+#editContainer {
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    // align-items: center;
+    // align-content: center;
+    background-color: red;
+}
 #allMyPostsContainer {
-    width: 100vw;
+    width: 100%;
 }
 #editProfileButtonContainer {
     display: flex;
-    // flex-direction: column;
+    flex-direction: column;
     justify-content: center;
-    // align-items: center;
+    align-items: center;
     margin: 20px 0;
     
+}
+
+#unfollowButton{
+    background-color: rgba(53, 152, 233, 0.493);
+    width: 30%;
+    padding: 5px;
+    margin: 0 30px;
+    // font-size: 15pt;
+    border-radius: 10px;
+    border: none;
+    color: white;
+      transition: background-color .5s ;
+    &:hover {
+      background-color: rgb(53, 152, 233)
+    }
+    &:focus {
+      outline: none;
+    }
+}
+
+#followButton {
+    background-color: rgba(53, 152, 233, 0.493);
+    width: 30%;
+    padding: 5px;
+    margin: 0 30px;
+    // font-size: 15pt;
+    border-radius: 10px;
+    border: none;
+    color: white;
+      transition: background-color .5s ;
+    &:hover {
+      background-color: rgb(53, 152, 233)
+    }
+    &:focus {
+      outline: none;
+    }
+}
+
+#followButtonContainer {
+    display: flex;
+    justify-content: center;
 }
