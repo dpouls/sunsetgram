@@ -17,7 +17,7 @@ class FollowingFeed extends Component {
   getPosts = () => {
     Axios.get("/api/followingposts").then(res => {
       this.setState({ posts: res.data });
-      console.log("getposts hit",this.state.posts[0].caption);
+      // console.log("getposts hit",this.state.posts[0].caption);
     });
   };
 
@@ -33,14 +33,21 @@ class FollowingFeed extends Component {
         </div>
 
         <div className="feedPostContainer">
-          {posts.sort((a,b) => b.post_id - a.post_id).map((post, index) => (
+          
+          {
+          posts.length > 0 ?
+          
+          posts.sort((a,b) => b.post_id - a.post_id).map((post, index) => (
             <FollowingPosts
               getPostsFn={this.getPosts}
               index={index}
               post={post}
               key={index}
             />
-          ))}
+          ))
+        :
+        <span>You aren't following anyone!</span>
+        }
         </div>
       </div>
     );

@@ -2,7 +2,7 @@
 require('dotenv').config()
 const express = require('express'),
       massive = require('massive'),
-      {SERVER_PORT, CONNECTION_STRING,SESSION_SECRET} = process.env,
+      {S3_BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, SERVER_PORT, CONNECTION_STRING,SESSION_SECRET} = process.env,
       session = require('express-session'),
       pc = require('./controllers/postController'),
       ac = require('./controllers/authController'),
@@ -12,6 +12,7 @@ const express = require('express'),
       fc = require('./controllers/followerController'),
       sc = require('./controllers/specificController'),
       folC = require('./controllers/followingController'),
+      aws = require('aws-sdk'),
       gradient = require('gradient-string'),
       app = express();
 
@@ -59,6 +60,7 @@ app.get('/api/myposts/', pc.getMyPosts)
 app.post('/api/add',pc.addPost)
 app.delete('/api/delete/:post_id', pc.deletePost)
 app.put('/api/editpost/:post_id', pc.editPost)
+app.get('/api/post/:post_id', pc.getOnePost)
 
 //FOLLOWING POSTS
 app.get('/api/followingposts',folC.getFollowingPosts)
@@ -74,6 +76,39 @@ app.get('/api/comments/:post_id',cc.getAllComments)
 app.post('/api/addcomment/:post_id', cc.addComment)
 app.delete('/api/deletecomment/:comment_id', cc.deleteComment)
 app.put('/api/editcomment/:comment_id', cc.editComment)
+
+//AWS
+app.get('/api/signs3', (req, res) => {
+    aws.config = {
+      region: 'us-west-1',
+      accessKeyId: AWS_ACCESS_KEY_ID,
+      secretAccessKey: AWS_SECRET_ACCESS_KEY,
+    };
+  
+    const s3 = new aws.S3();
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: fileName,
+      Expires: 60,
+      ContentType: fileType,
+      ACL: 'public-read',
+    };
+  
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.end();
+      }
+      const returnData = {
+        signedRequest: data,
+        url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`,
+      };
+  
+      return res.send(returnData);
+    });
+  });
 
 
 const port = SERVER_PORT || 7000;

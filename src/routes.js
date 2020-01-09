@@ -8,6 +8,7 @@ import Discover from './Components/Discover/Discover'
 import FollowingFeed from './Components/followingFeed/FollowingFeed'
 import SpecificUserProfile from './Components/SpecificUserProfile/SpecificUserProfile'
 import AddPost from './Components/addPost/AddPost'
+import IndividualPost from './Components/individualPost/IndividualPost'
 
 
 export default (
@@ -21,6 +22,7 @@ export default (
         <Route path='/addpost' component={AddPost}/>
         <Route path='/feed' component = {Feed}/>
         <Route path='/testfeed' component = {TestFeed}/>
+        <Route path='/post/:post_id' component = {IndividualPost}/>
     </Switch>
 
 )

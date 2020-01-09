@@ -3,29 +3,55 @@
       width: 100%;
       height: 90vh;
       flex-direction: column;
-      justify-content: center;
+      // justify-content: space-around;
       align-items: center;
-      align-content: center;
-      padding-top: 20vh;
-      // border: 1px solid;
+      // align-content: center;
+      padding-top: 10vh;
+      padding-bottom: 15vh;
+         // border: 1px solid;
 
   }
 
-  #imgPlaceholder {
-      height: 30vh;
-      width: 80%;
-      background-color: lightblue;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: x-large;
-  }
-  #imgPreview {
-      width: 80%;
-    background-color: lightblue;
-  }
+  // .dropzonecontainer {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: flex-end;
+  //   align-items: center;
+  //   height: 70vh;
+  //   width: 100%;
+  //   background-color: yellow;
+  // }
 
+  #placeholderImage {
+    width: 100%;
+  }
+  // #imgPlaceholder {
+  //     // height: 30vh;
+  //     width: 80%;
+  //     background-color: lightblue;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     color: white;
+  //     font-size: x-large;
+  // }
+  // #imgPreview {
+    
+  //   width: 50%;
+  //   background-color: lightblue;
+  // }
+
+  // #selectFile {
+  //   display: flex;
+  //   justify-content: center;
+    
+  //   border-radius: 10px;
+  //   width: 40vh;
+  //   padding: 10px;
+  //   background-color: #3599E9;;
+  //   font-size: 15pt;
+  //   color: white
+  // }
 
   #inputContainer {
     height: 8em;
@@ -79,4 +105,10 @@
       align-items: center;
   }
   
+}
+
+@media screen and (min-width: 1100px) {
+  #placeholderImage {
+    width: 70%;
+  }
 }

@@ -11,9 +11,14 @@ module.exports = {
         .then(posts => {res.status(200).send(posts)})
         .catch(err => res.status(500).send(err))
     },
-    
-
-
+    getOnePost: (req, res) => {
+        const {post_id} = req.params
+        console.log(post_id)
+        const db = req.app.get('db')
+        db.post.get_one_post(+post_id)
+        .then(post => res.status(200).send(post[0]))
+        .catch(err => console.log(err))
+    },
     addPost: (req, res) => {
         const db = req.app.get('db')
         const {id} = req.session.user

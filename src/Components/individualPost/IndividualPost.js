@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { connect } from "react-redux";
-// import {connect} from 'react-redux'
-// import Axios from 'axios'
 import Comments from "../comments/Comments";
-import "./MyPosts.scss";
-class MyPosts extends Component {
+import "../feed/AllPosts.scss";
+import {withRouter} from 'react-router-dom'
+
+class IndividualPost extends Component {
   constructor() {
     super();
     this.state = {
-      post: {},
+        thisPost: {},
       likers: [],
       likeCount: "",
       likedHeart: false,
@@ -23,119 +23,51 @@ class MyPosts extends Component {
       editPost: false
     };
   }
-//   editPost = () => {
-//     // const {caption} = this.state
-//     console.log(this.state.caption);
-//     Axios.put(`/api/editpost/${this.props.post.post_id}`, {
-//       caption: this.state.caption
-//     })
+  componentDidMount = async () => {
+    console.log('props',this.props)
+    this.getPost()
+    // console.log(this.state)
+    await this.getLikers();
+    this.colorHearts();
+    this.getAllComments();
+    // console.log('feed props',this.props)
+  };
+  getPost = async() => {
+      await Axios.get(`/api/post/${this.props.match.params.post_id}`)
+      .then(res =>  this.setState({thisPost: res.data}
+      ))
+      .catch(err => console.log(err))
+      console.log(this.state.thisPost)
+  }
 
-//       .then(res => console.log("edit response", res))
-//       .catch(err => console.log(err));
-//   };
-
-//   deletePost = () => {
-//     Axios.delete(`/api/delete/${this.props.post.post_id}`).then(res =>
-//       this.props.getMyPostsFn()
-//     );
-//   };
-
-//   componentDidMount = async () => {
-//     console.log("props", this.props);
-//     // this.getLikes()
-//     await this.getLikers();
-//     this.colorHearts();
-//     this.getAllComments();
-//   };
-//   unlike = () => {
-//     console.log("unlike hit");
-//     Axios.delete(`/api/unlike/${this.props.post.post_id}`).then(res =>
-//       this.getLikers()
-//     );
-//     this.setState({ likedHeart: false });
-//   };
-
-//   like = post_id => {
-//     console.log("like hit");
-//     Axios.post(`/api/like/${this.props.post.post_id}`).then(res =>
-//       this.getLikers()
-//     );
-//     this.setState({ likedHeart: true });
-//   };
-//   likeHandler = async () => {
-//     await this.getLikers();
-//     const likers = this.state.likers;
-//     const filtered = likers.filter(el => {
-//       return el.user_id === this.props.userReducer.user.id;
-//     });
-//     if (filtered.length > 0) {
-//       this.unlike();
-//     } else {
-//       this.like();
-//     }
-//   };
-//   getLikers = async () => {
-//     await Axios.get(`/api/likers/${this.props.post.post_id}`).then(res => {
-//       this.setState({ likers: res.data });
-//     });
-//   };
-//   colorHearts = () => {
-//     let filtered = this.state.likers.filter(el => {
-//       return el.user_id === this.props.userReducer.user.id;
-//     });
-//     if (filtered.length > 0) {
-//       this.setState({ likedHeart: true });
-//     }
-//   };
-
-
-//   getAllComments = () => {
-//     Axios.get(`/api/comments/${this.props.post.post_id}`)
-//       .then(res => this.setState({ comments: res.data }))
-//       .catch(err => console.log("Error getting comments.", err));
-//   };
-
-//   inputHandler = e => this.setState({ [e.target.name]: e.target.value });
-//   addComment = () => {
-//     Axios.post(`/api/addcomment/${this.props.post.post_id}`, {
-//       content: this.state.content
-//     })
-//       .then(res => this.getAllComments())
-//       .catch(err => console.log(err));
-//     this.setState({ content: "" });
-//   };
-editPost = async () => {
-    await Axios.put(`/api/editpost/${this.props.post.post_id}`, {
+  editPost = async () => {
+    await Axios.put(`/api/editpost/${this.state.thisPost.post_id}`, {
       caption: this.state.caption
     })
-      .then(res => this.props.getMyPostsFn())
+      .then(res => this.getPost())
       .catch(err => console.log(err));
     this.setState({ caption: "" });
     this.toggleEditPost();
   };
   deletePost = () => {
-    Axios.delete(`/api/delete/${this.props.post.post_id}`).then(res =>
-      this.props.getMyPostsFn()
+    Axios.delete(`/api/delete/${this.state.thisPost.post_id}`).then(res =>
+      this.props.history.push('/following')
     );
   };
-  componentDidUpdate = (prevProps, prevState) => {
-    if (this.props.post.caption !== prevProps.post.caption) {
-      this.props.getMyPostsFn();
-    }
-    // console.log("cdu hit");
-  };
-  componentDidMount = async () => {
-    await this.getLikers();
-    this.colorHearts();
-    this.getAllComments();
-  };
+//   componentDidUpdate = (prevProps, prevState) => {
+//     if (thisPost.caption !== prevProps.post.caption) {
+//       this.props.getPostsFn();
+//     }
+//     // console.log("cdu hit");
+//   };
+
 
 
   // LIKES FUNCTIONS
 
     //gets an array of the users that have liked this post
   getLikers = async () => {
-    await Axios.get(`/api/likers/${this.props.post.post_id}`).then(res => {
+    await Axios.get(`/api/likers/${this.props.match.params.post_id}`).then(res => {
       this.setState({ likers: res.data });
     });
   };
@@ -155,14 +87,14 @@ editPost = async () => {
   };  
   like = post_id => {
     console.log("like hit");
-    Axios.post(`/api/like/${this.props.post.post_id}`).then(res =>
+    Axios.post(`/api/like/${this.state.thisPost.post_id}`).then(res =>
       this.getLikers()
     );
     this.setState({ likedHeart: true });
   };
   unlike = () => {
     console.log("unlike hit");
-    Axios.delete(`/api/unlike/${this.props.post.post_id}`).then(res =>
+    Axios.delete(`/api/unlike/${this.state.thisPost.post_id}`).then(res =>
       this.getLikers()
     );
     this.setState({ likedHeart: false });
@@ -185,56 +117,64 @@ editPost = async () => {
 
 
   getAllComments = () => {
-    Axios.get(`/api/comments/${this.props.post.post_id}`)
+    Axios.get(`/api/comments/${this.state.thisPost.post_id}`)
       .then(res => this.setState({ comments: res.data }))
       .catch(err => console.log("Error getting comments.", err));
   };
 
 
   addComment = () => {
-    Axios.post(`/api/addcomment/${this.props.post.post_id}`, {
+    Axios.post(`/api/addcomment/${this.state.thisPost.post_id}`, {
       content: this.state.content
     })
       .then(res => this.getAllComments())
       .catch(err => console.log(err));
     this.setState({ content: "", addComment: false, viewComments: true });
   };
-    // TOGGLES FOR RENDERING 
 
-    toggleAddComment = () => {
-        this.setState({ addComment: !this.state.addComment });
-      };
-      toggleViewComments = () => {
-        this.setState({ viewComments: !this.state.viewComments });
-      };
-      toggleCommentMenu = () => {
-        this.setState({ commentMenu: !this.state.commentMenu });
-      };
-      togglePostMenu = () => {
-        this.setState({ postMenu: !this.state.postMenu });
-      };
-      toggleEditPost = () => {
-        this.setState({ editPost: !this.state.editPost });
-      };
+
+  // TOGGLES FOR RENDERING 
+
+  toggleAddComment = () => {
+    this.setState({ addComment: !this.state.addComment });
+  };
+  toggleViewComments = () => {
+    this.setState({ viewComments: !this.state.viewComments });
+  };
+  toggleCommentMenu = () => {
+    this.setState({ commentMenu: !this.state.commentMenu });
+  };
+  togglePostMenu = () => {
+    this.setState({ postMenu: !this.state.postMenu });
+  };
+  toggleEditPost = () => {
+    this.setState({ editPost: !this.state.editPost });
+  };
+
+  goToProfile = () => {
+    this.props.history.push(`/specificprofile/${this.state.thisPost.id}`)
+  }
+
 
   render() {
-    console.log(this.props.post.image_url)
-    const { comments, content } = this.state;
+    const {thisPost,comments, content } = this.state;
+
+    // console.log('this.props', this.props)
     return (
         <div id="wholePostContainer">
         {/* post header and image */}
 
         <div className="postHeader">
-          <div className="postHeaderUserInfoContainer">
+          <div onClick={() => {this.goToProfile()}} className="postHeaderUserInfoContainer">
             <img
               className="postHeaderPic"
-              src={this.props.userReducer.user.profile_img}
+              src={thisPost.profile_img}
               alt=""
             />
-            <p>{this.props.post.username}</p>
+            <p>{thisPost.username}</p>
           </div>
 
-          {this.props.post.id === this.props.userReducer.user.id ? (
+          {thisPost.id === this.props.userReducer.user.id ? (
             this.state.postMenu ? (
               <div className="postMenu">
                 <i
@@ -264,7 +204,7 @@ editPost = async () => {
         
         <img
           className="images"
-          src={this.props.post.image_url}
+          src={thisPost.image_url}
           alt="sunset pic"
         />
 
@@ -311,8 +251,8 @@ editPost = async () => {
         {/* Caption container */}
 
         <section id="captionContainer">
-          <p id="caption">
-            <strong>{this.props.post.username}</strong>{" "}
+          <section id="caption">
+            <strong onClick={() => {this.goToProfile()}}>{thisPost.username}</strong>{" "}
             {this.state.editPost ? (
               <div>
                 {" "}
@@ -329,19 +269,19 @@ editPost = async () => {
                 </span>
               </div>
             ) : (
-              this.props.post.caption
+              thisPost.caption
             )}
-          </p>
+          </section>
         </section>
 
         {this.state.viewComments ? (
           <div id="allCommentsContainer">
-            {comments.sort((a,b) => b.comment_id - a.comment_id).map((comment, index) => {
+            {comments.sort((a,b) => a.comment_id - b.comment_id).map((comment, index) => {
               return (
                 <Comments
                   toggleCommentMenuFn={this.toggleCommentMenu}
                   commentMenu={this.state.commentMenu}
-                  thisPost={this.props.post}
+                  thisPost={thisPost}
                   getCommentsFn={this.getAllComments}
                   thisComment={comment}
                   author_id={comment.author_id}
@@ -372,63 +312,12 @@ editPost = async () => {
           </div>
         ) : null}
 
-        {/* IMPORTANT EDIT FUNCTIONALITY DO NOT ERASE! */}
       </div>
-    //   <div id="eachWholePostContainer">
-    //     <img
-    //       className="myImages"
-    //       src={this.props.post.image_url}
-    //       alt="sunset pic"
-    //     />
-    //     <button
-    //       className={this.state.likedHeart ? "likedHeart" : null}
-    //       onClick={() => this.likeHandler()}
-    //     >
-    //       ♡
-    //     </button>
-    //     {this.state.likers.length < 1 ? null : +this.state.likers.length ===
-    //       1 ? (
-    //       <p>{this.state.likers.length} Like</p>
-    //     ) : (
-    //       <p>{this.state.likers.length} Likes</p>
-    //     )}
-    //     <p>{this.props.post.caption}</p>
-    //     <input
-    //       name="caption"
-    //       placeholder="edit caption here..."
-    //       value={this.state.caption}
-    //       onChange={e => this.inputHandler(e)}
-    //       type="text"
-    //     />
-
-    //     <button onClick={() => this.editPost()}>Submit Edit</button>
-    //     <button onClick={this.deletePost}>Delete Post</button>
-    //     {comments.map((comment, index) => {
-    //       return (
-    //         <Comments
-    //           thisPost={this.props.post}
-    //           getCommentsFn={this.getAllComments}
-    //           thisComment={comment}
-    //           author_id={comment.author_id}
-    //           key={comment.comment_id}
-    //         />
-    //       );
-    //     })}
-
-    //     <div>
-    //       <input
-    //         type="text"
-    //         name="content"
-    //         value={content}
-    //         onChange={e => this.inputHandler(e)}
-    //       />
-    //       <button onClick={() => this.addComment()}>Add comment!</button>
-    //     </div>
-    //   </div>
     );
   }
 }
+
 const mapStateToProps = reduxState => {
   return reduxState;
 };
-export default connect(mapStateToProps)(MyPosts);
+export default withRouter(connect(mapStateToProps)(IndividualPost));
