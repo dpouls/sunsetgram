@@ -43,8 +43,6 @@ class Auth extends Component {
       .then(res => {
         this.props.getUser(res.data);
         this.props.history.push("/following");
-        // alert(res.data)
-        // console.log('res',res.data)
       })
       .catch(err => console.log(err));
   };

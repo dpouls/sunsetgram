@@ -3,7 +3,7 @@ import Axios from "axios";
 import { connect } from "react-redux";
 import Comments from "../comments/Comments";
 import "./AllPosts.scss";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 
 class AllPosts extends Component {
   constructor() {
@@ -22,8 +22,6 @@ class AllPosts extends Component {
       editPost: false
     };
   }
- 
-
 
   editPost = async () => {
     await Axios.put(`/api/editpost/${this.props.post.post_id}`, {
@@ -52,10 +50,9 @@ class AllPosts extends Component {
     // console.log('feed props',this.props)
   };
 
-
   // LIKES FUNCTIONS
 
-    //gets an array of the users that have liked this post
+  //gets an array of the users that have liked this post
   getLikers = async () => {
     await Axios.get(`/api/likers/${this.props.post.post_id}`).then(res => {
       this.setState({ likers: res.data });
@@ -74,7 +71,7 @@ class AllPosts extends Component {
     } else {
       this.like();
     }
-  };  
+  };
   like = post_id => {
     console.log("like hit");
     Axios.post(`/api/like/${this.props.post.post_id}`).then(res =>
@@ -90,8 +87,7 @@ class AllPosts extends Component {
     this.setState({ likedHeart: false });
   };
 
-
-    // colors hearts red if the user has already liked it
+  // colors hearts red if the user has already liked it
   colorHearts = () => {
     let filtered = this.state.likers.filter(el => {
       return el.user_id === this.props.userReducer.user.id;
@@ -105,13 +101,11 @@ class AllPosts extends Component {
 
   inputHandler = e => this.setState({ [e.target.name]: e.target.value });
 
-
   getAllComments = () => {
     Axios.get(`/api/comments/${this.props.post.post_id}`)
       .then(res => this.setState({ comments: res.data }))
       .catch(err => console.log("Error getting comments.", err));
   };
-
 
   addComment = () => {
     Axios.post(`/api/addcomment/${this.props.post.post_id}`, {
@@ -122,8 +116,7 @@ class AllPosts extends Component {
     this.setState({ content: "", addComment: false, viewComments: true });
   };
 
-
-  // TOGGLES FOR RENDERING 
+  // TOGGLES FOR RENDERING
 
   toggleAddComment = () => {
     this.setState({ addComment: !this.state.addComment });
@@ -142,19 +135,22 @@ class AllPosts extends Component {
   };
 
   goToProfile = () => {
-    this.props.history.push(`/specificprofile/${this.props.post.id}`)
-  }
-
+    this.props.history.push(`/specificprofile/${this.props.post.id}`);
+  };
 
   render() {
     const { comments, content } = this.state;
-    // console.log('this.props', this.props)
     return (
       <div id="wholePostContainer">
         {/* post header and image */}
 
         <div className="postHeader">
-          <div onClick={() => {this.goToProfile()}} className="postHeaderUserInfoContainer">
+          <div
+            onClick={() => {
+              this.goToProfile();
+            }}
+            className="postHeaderUserInfoContainer"
+          >
             <img
               className="postHeaderPic"
               src={this.props.post.profile_img}
@@ -190,7 +186,7 @@ class AllPosts extends Component {
             )
           ) : null}
         </div>
-        
+
         <img
           className="images"
           src={this.props.post.image_url}
@@ -227,7 +223,7 @@ class AllPosts extends Component {
         </section>
 
         {/* shows how many likes  */}
-       
+
         <section id="likeDisplay">
           {this.state.likers.length < 1 ? null : +this.state.likers.length ===
             1 ? (
@@ -241,7 +237,13 @@ class AllPosts extends Component {
 
         <section id="captionContainer">
           <section id="caption">
-            <strong onClick={() => {this.goToProfile()}}>{this.props.post.username}</strong>{" "}
+            <strong
+              onClick={() => {
+                this.goToProfile();
+              }}
+            >
+              {this.props.post.username}
+            </strong>{" "}
             {this.state.editPost ? (
               <div>
                 {" "}
@@ -265,19 +267,21 @@ class AllPosts extends Component {
 
         {this.state.viewComments ? (
           <div id="allCommentsContainer">
-            {comments.sort((a,b) => a.comment_id - b.comment_id).map((comment, index) => {
-              return (
-                <Comments
-                  toggleCommentMenuFn={this.toggleCommentMenu}
-                  commentMenu={this.state.commentMenu}
-                  thisPost={this.props.post}
-                  getCommentsFn={this.getAllComments}
-                  thisComment={comment}
-                  author_id={comment.author_id}
-                  key={comment.comment_id}
-                />
-              );
-            })}
+            {comments
+              .sort((a, b) => a.comment_id - b.comment_id)
+              .map((comment, index) => {
+                return (
+                  <Comments
+                    toggleCommentMenuFn={this.toggleCommentMenu}
+                    commentMenu={this.state.commentMenu}
+                    thisPost={this.props.post}
+                    getCommentsFn={this.getAllComments}
+                    thisComment={comment}
+                    author_id={comment.author_id}
+                    key={comment.comment_id}
+                  />
+                );
+              })}
           </div>
         ) : this.state.comments.length > 0 ? (
           <section onClick={() => this.toggleViewComments()} id="viewComments">
@@ -300,8 +304,6 @@ class AllPosts extends Component {
             </section>
           </div>
         ) : null}
-
-        {/* IMPORTANT EDIT FUNCTIONALITY DO NOT ERASE! */}
       </div>
     );
   }

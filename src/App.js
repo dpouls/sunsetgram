@@ -11,9 +11,7 @@ import Axios from 'axios';
 
 
 function App(props) {
-  console.log('props',props)
   useEffect(() => {
-    console.log('useeffect hit', props)
     Axios.get('/auth/currentuser')
     .then((res) => {
       props.getUser(res.data)
@@ -37,7 +35,5 @@ function App(props) {
     </div>
   );
 }
-// const mapStateToProps = reduxState => {
-//   return reduxState;
-// };
+
 export default withRouter(connect(null,{getUser}) (App) );

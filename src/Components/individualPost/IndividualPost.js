@@ -24,20 +24,16 @@ class IndividualPost extends Component {
     };
   }
   componentDidMount = async () => {
-    console.log('props',this.props)
     this.getPost()
-    // console.log(this.state)
     await this.getLikers();
     this.colorHearts();
     this.getAllComments();
-    // console.log('feed props',this.props)
   };
   getPost = async() => {
       await Axios.get(`/api/post/${this.props.match.params.post_id}`)
       .then(res =>  this.setState({thisPost: res.data}
       ))
       .catch(err => console.log(err))
-      console.log(this.state.thisPost)
   }
 
   editPost = async () => {
@@ -54,14 +50,6 @@ class IndividualPost extends Component {
       this.props.history.push('/following')
     );
   };
-//   componentDidUpdate = (prevProps, prevState) => {
-//     if (thisPost.caption !== prevProps.post.caption) {
-//       this.props.getPostsFn();
-//     }
-//     // console.log("cdu hit");
-//   };
-
-
 
   // LIKES FUNCTIONS
 
@@ -86,14 +74,12 @@ class IndividualPost extends Component {
     }
   };  
   like = post_id => {
-    console.log("like hit");
     Axios.post(`/api/like/${this.state.thisPost.post_id}`).then(res =>
       this.getLikers()
     );
     this.setState({ likedHeart: true });
   };
   unlike = () => {
-    console.log("unlike hit");
     Axios.delete(`/api/unlike/${this.state.thisPost.post_id}`).then(res =>
       this.getLikers()
     );
@@ -159,7 +145,6 @@ class IndividualPost extends Component {
   render() {
     const {thisPost,comments, content } = this.state;
 
-    // console.log('this.props', this.props)
     return (
         <div id="wholePostContainer">
         {/* post header and image */}
@@ -180,17 +165,17 @@ class IndividualPost extends Component {
                 <i
                   onClick={() => this.toggleEditPost()}
                   className="postMenuButtons"
-                  class="far fa-edit"
+                  className="far fa-edit"
                 ></i>
                 <i
                   onClick={() => this.deletePost()}
                   className="postMenuButtons"
-                  class="fas fa-eraser"
+                  className="fas fa-eraser"
                 ></i>
                 <i
                   onClick={() => this.togglePostMenu()}
                   className="postMenuButtons"
-                  class="fas fa-ellipsis-h"
+                  className="fas fa-ellipsis-h"
                 ></i>
               </div>
             ) : (

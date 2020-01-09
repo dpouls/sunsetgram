@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import { connect } from "react-redux";
-// import {connect} from 'react-redux'
-// import Axios from 'axios'
 import Comments from "../comments/Comments";
 import "./SpecificUserPosts.scss";
 class SpecificUserPosts extends Component {
@@ -41,10 +39,9 @@ class SpecificUserPosts extends Component {
     this.getAllComments();
   };
 
-
   // LIKES FUNCTIONS
 
-    //gets an array of the users that have liked this post
+  //gets an array of the users that have liked this post
   getLikers = async () => {
     await Axios.get(`/api/likers/${this.props.post.post_id}`).then(res => {
       this.setState({ likers: res.data });
@@ -63,24 +60,21 @@ class SpecificUserPosts extends Component {
     } else {
       this.like();
     }
-  };  
+  };
   like = post_id => {
-    console.log("like hit");
     Axios.post(`/api/like/${this.props.post.post_id}`).then(res =>
       this.getLikers()
     );
     this.setState({ likedHeart: true });
   };
   unlike = () => {
-    console.log("unlike hit");
     Axios.delete(`/api/unlike/${this.props.post.post_id}`).then(res =>
       this.getLikers()
     );
     this.setState({ likedHeart: false });
   };
 
-
-    // colors hearts red if the user has already liked it
+  // colors hearts red if the user has already liked it
   colorHearts = () => {
     let filtered = this.state.likers.filter(el => {
       return el.user_id === this.props.userReducer.user.id;
@@ -94,13 +88,11 @@ class SpecificUserPosts extends Component {
 
   inputHandler = e => this.setState({ [e.target.name]: e.target.value });
 
-
   getAllComments = () => {
     Axios.get(`/api/comments/${this.props.post.post_id}`)
       .then(res => this.setState({ comments: res.data }))
       .catch(err => console.log("Error getting comments.", err));
   };
-
 
   addComment = () => {
     Axios.post(`/api/addcomment/${this.props.post.post_id}`, {
@@ -110,28 +102,28 @@ class SpecificUserPosts extends Component {
       .catch(err => console.log(err));
     this.setState({ content: "", addComment: false, viewComments: true });
   };
-    // TOGGLES FOR RENDERING 
+  // TOGGLES FOR RENDERING
 
-    toggleAddComment = () => {
-        this.setState({ addComment: !this.state.addComment });
-      };
-      toggleViewComments = () => {
-        this.setState({ viewComments: !this.state.viewComments });
-      };
-      toggleCommentMenu = () => {
-        this.setState({ commentMenu: !this.state.commentMenu });
-      };
-      togglePostMenu = () => {
-        this.setState({ postMenu: !this.state.postMenu });
-      };
-      toggleEditPost = () => {
-        this.setState({ editPost: !this.state.editPost });
-      };
+  toggleAddComment = () => {
+    this.setState({ addComment: !this.state.addComment });
+  };
+  toggleViewComments = () => {
+    this.setState({ viewComments: !this.state.viewComments });
+  };
+  toggleCommentMenu = () => {
+    this.setState({ commentMenu: !this.state.commentMenu });
+  };
+  togglePostMenu = () => {
+    this.setState({ postMenu: !this.state.postMenu });
+  };
+  toggleEditPost = () => {
+    this.setState({ editPost: !this.state.editPost });
+  };
 
   render() {
     const { comments, content } = this.state;
     return (
-        <div id="wholePostContainer">
+      <div id="wholePostContainer">
         {/* post header and image */}
 
         <div className="postHeader">
@@ -143,35 +135,8 @@ class SpecificUserPosts extends Component {
             />
             <p>{this.props.post.username}</p>
           </div>
-
-          {/* {this.props.post.id === this.props.userReducer.user.id ? (
-            this.state.postMenu ? (
-              <div className="postMenu">
-                <i
-                  onClick={() => this.toggleEditPost()}
-                  className="postMenuButtons"
-                  class="far fa-edit"
-                ></i>
-                <i
-                  onClick={() => this.deletePost()}
-                  className="postMenuButtons"
-                  class="fas fa-eraser"
-                ></i>
-                <i
-                  onClick={() => this.togglePostMenu()}
-                  className="postMenuButtons"
-                  class="fas fa-ellipsis-h"
-                ></i>
-              </div>
-            ) : (
-              <i
-                onClick={() => this.togglePostMenu()}
-                className="fas fa-ellipsis-h"
-              ></i>
-            )
-          ) : null} */}
         </div>
-        
+
         <img
           className="images"
           src={this.props.post.image_url}
@@ -208,7 +173,7 @@ class SpecificUserPosts extends Component {
         </section>
 
         {/* shows how many likes  */}
-       
+
         <section id="likeDisplay">
           {this.state.likers.length < 1 ? null : +this.state.likers.length ===
             1 ? (
@@ -246,19 +211,21 @@ class SpecificUserPosts extends Component {
 
         {this.state.viewComments ? (
           <div id="allCommentsContainer">
-            {comments.sort((a,b) => b.comment_id - a.comment_id).map((comment, index) => {
-              return (
-                <Comments
-                  toggleCommentMenuFn={this.toggleCommentMenu}
-                  commentMenu={this.state.commentMenu}
-                  thisPost={this.props.post}
-                  getCommentsFn={this.getAllComments}
-                  thisComment={comment}
-                  author_id={comment.author_id}
-                  key={comment.comment_id}
-                />
-              );
-            })}
+            {comments
+              .sort((a, b) => b.comment_id - a.comment_id)
+              .map((comment, index) => {
+                return (
+                  <Comments
+                    toggleCommentMenuFn={this.toggleCommentMenu}
+                    commentMenu={this.state.commentMenu}
+                    thisPost={this.props.post}
+                    getCommentsFn={this.getAllComments}
+                    thisComment={comment}
+                    author_id={comment.author_id}
+                    key={comment.comment_id}
+                  />
+                );
+              })}
           </div>
         ) : this.state.comments.length > 0 ? (
           <section onClick={() => this.toggleViewComments()} id="viewComments">
@@ -281,60 +248,7 @@ class SpecificUserPosts extends Component {
             </section>
           </div>
         ) : null}
-
-        {/* IMPORTANT EDIT FUNCTIONALITY DO NOT ERASE! */}
       </div>
-    //   <div id="eachWholePostContainer">
-    //     <img
-    //       className="myImages"
-    //       src={this.props.post.image_url}
-    //       alt="sunset pic"
-    //     />
-    //     <button
-    //       className={this.state.likedHeart ? "likedHeart" : null}
-    //       onClick={() => this.likeHandler()}
-    //     >
-    //       ♡
-    //     </button>
-    //     {this.state.likers.length < 1 ? null : +this.state.likers.length ===
-    //       1 ? (
-    //       <p>{this.state.likers.length} Like</p>
-    //     ) : (
-    //       <p>{this.state.likers.length} Likes</p>
-    //     )}
-    //     <p>{this.props.post.caption}</p>
-    //     <input
-    //       name="caption"
-    //       placeholder="edit caption here..."
-    //       value={this.state.caption}
-    //       onChange={e => this.inputHandler(e)}
-    //       type="text"
-    //     />
-
-    //     <button onClick={() => this.editPost()}>Submit Edit</button>
-    //     <button onClick={this.deletePost}>Delete Post</button>
-    //     {comments.map((comment, index) => {
-    //       return (
-    //         <Comments
-    //           thisPost={this.props.post}
-    //           getCommentsFn={this.getAllComments}
-    //           thisComment={comment}
-    //           author_id={comment.author_id}
-    //           key={comment.comment_id}
-    //         />
-    //       );
-    //     })}
-
-    //     <div>
-    //       <input
-    //         type="text"
-    //         name="content"
-    //         value={content}
-    //         onChange={e => this.inputHandler(e)}
-    //       />
-    //       <button onClick={() => this.addComment()}>Add comment!</button>
-    //     </div>
-    //   </div>
     );
   }
 }

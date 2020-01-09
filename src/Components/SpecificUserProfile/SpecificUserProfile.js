@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Axios from "axios";
 import SpecificUserPosts from "./SpecificUserPosts";
 import { connect } from "react-redux";
-import '../profile/Profile.scss'
-import '../profile/MyPosts.scss'
+import "../profile/Profile.scss";
+import "../profile/MyPosts.scss";
 
 class SpecificUserProfile extends Component {
   constructor() {
@@ -18,25 +18,21 @@ class SpecificUserProfile extends Component {
   }
   async componentDidMount() {
     await this.getUserInfo();
-    // console.log(this.props)
     await this.getFollowers();
-    // this.getFollowed();
     this.getFollowing();
-    console.log("this.state", this.state.followers);
   }
   getUserInfo() {
     Axios.get(`/api/specificuserinfo/${this.props.match.params.id}`)
-      .then(res =>
-        // console.log('res.data',res.data)
-        this.setState({ user: res.data })
-      )
+      .then(res => this.setState({ user: res.data }))
       .catch(err => console.log(err));
   }
   getFollowers = () => {
     Axios.get(`/api/getspecificfollowers/${this.props.match.params.id}`)
-      .then(res => this.setState({ followers: res.data }, () => {
-        this.getFollowed()
-      }))
+      .then(res =>
+        this.setState({ followers: res.data }, () => {
+          this.getFollowed();
+        })
+      )
       .catch(err => console.log(err));
   };
   getFollowing = () => {
@@ -48,18 +44,11 @@ class SpecificUserProfile extends Component {
     let filtered = this.state.followers.filter(el => {
       return el.follower_id === this.props.userReducer.user.id;
     });
-
-    console.log('filtered',filtered)
-    // if (filtered.length > 0) {
-    //   this.setState({ followed: true });
-    // }
-
-     filtered.length > 0 && this.setState({followed: true}) 
+    filtered.length > 0 && this.setState({ followed: true });
   };
   follow = () => {
     Axios.post("/api/follow", { followed_id: this.props.match.params.id }).then(
       res => {
-        console.log(res.data);
         this.getFollowers();
         this.setState({ followed: true });
       }
@@ -69,17 +58,12 @@ class SpecificUserProfile extends Component {
     Axios.post("/api/unfollow", {
       followed_id: this.props.match.params.id
     }).then(res => {
-      console.log(res.data);
       this.getFollowers();
       this.setState({ followed: false });
     });
   };
 
   render() {
-    // console.log(this.state.followers);/
-    console.log("state followers", this.state.followers);
-    console.log("this.props", this.props);
-
     return (
       <div id="wholeProfile">
         <section id="profileHeader">
@@ -92,7 +76,6 @@ class SpecificUserProfile extends Component {
             alt="profile pic"
           />
           <section id="statsContainer">
-            {/* <p>{this.state.myPosts.length} Posts</p> */}
             <section>
               <p>{this.state.user.length}</p>
               <p className="statsWords">Posts</p>
@@ -111,11 +94,11 @@ class SpecificUserProfile extends Component {
         </section>
         <section id="followButtonContainer">
           {this.state.followed ? (
-            <button id='followButton' onClick={() => this.unfollow()} id="unfollowButton">
+            <button onClick={() => this.unfollow()} id="unfollowButton">
               Unfollow
             </button>
           ) : (
-            <button id='followButton' onClick={() => this.follow()} id="followButton">
+            <button id="followButton" onClick={() => this.follow()}>
               Follow
             </button>
           )}

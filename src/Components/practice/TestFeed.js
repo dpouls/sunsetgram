@@ -1,8 +1,9 @@
-import React, { Component, useState, useEffect } from "react";
+// import React, { Component, useState, useEffect } from "react";
+import React, { Component} from "react";
 
 import { connect } from "react-redux";
 import { getAllPosts } from "./../../redux/postReducer";
-import Axios from "axios";
+// import Axios from "axios";
 import "./TestFeed.scss";
 
 // const TestFeedHook = props => {

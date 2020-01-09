@@ -13,7 +13,6 @@ module.exports = {
     },
     getOnePost: (req, res) => {
         const {post_id} = req.params
-        console.log(post_id)
         const db = req.app.get('db')
         db.post.get_one_post(+post_id)
         .then(post => res.status(200).send(post[0]))
@@ -32,9 +31,6 @@ module.exports = {
         const {post_id} = req.params
         const db = req.app.get('db')
         const {caption} = req.body
-        // console.log(new Date())
-
-        // console.log(caption)
         db.post.edit_post([caption,post_id])
         .then(post => res.status(200).send(post) )
         .catch(err => console.log(err))
