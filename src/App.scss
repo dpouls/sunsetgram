@@ -15,9 +15,10 @@
   }
 
   #wholeThing {
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
+    overflow-y: hidden;
     // box-sizing: border-box;
   }
 

@@ -13,11 +13,13 @@ class FollowingFeed extends Component {
 
   componentDidMount = () => {
     this.getPosts();
+    
   };
-  getPosts = () => {
-    Axios.get("/api/followingposts").then(res => {
+  getPosts = async () => {
+    await Axios.get("/api/followingposts").then(res => {
       this.setState({ posts: res.data });
     });
+    console.log(this.state.posts)
   };
 
   render() {
