@@ -62,11 +62,14 @@ class SpecificUserPosts extends Component {
       this.like();
     }
   };
-  like = post_id => {
-    Axios.post(`/api/like/${this.props.post.post_id}`).then(res =>
-      this.getLikers()
-    );
-    this.setState({ likedHeart: true });
+  like = async () => {
+    await Axios.post(`/api/like/${this.props.post.post_id}`).then(res => this.getLikers()
+    ).then(
+      this.setState({ likedHeart: true })
+    )
+    .catch(err => console.log(err))
+    this.likeNotification()
+
   };
   unlike = () => {
     Axios.delete(`/api/unlike/${this.props.post.post_id}`).then(res =>
@@ -74,7 +77,12 @@ class SpecificUserPosts extends Component {
     );
     this.setState({ likedHeart: false });
   };
-
+  likeNotification = () => {
+    const {post} = this.props
+    Axios.post('/api/addnotification/', {receiver_id: post.author_id, post_id: post.post_id, is_comment: false, is_like: true, is_follow: false, comment_id: 155})
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  }
   // colors hearts red if the user has already liked it
   colorHearts = () => {
     let filtered = this.state.likers.filter(el => {

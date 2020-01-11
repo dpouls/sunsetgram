@@ -9,6 +9,7 @@ module.exports = {
     addNotification: (req,res) => {
         db = req.app.get('db')
         console.log(req.body)
+        console.log('addNotif hit')
         const sender_id = req.session.user.id
          const {receiver_id,post_id,is_comment,is_like, is_follow,comment_id} = req.body
         db.notifications.new_notification([sender_id,receiver_id,post_id,is_comment,is_like,is_follow,comment_id])

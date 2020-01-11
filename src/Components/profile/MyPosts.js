@@ -69,19 +69,28 @@ class MyPosts extends Component {
       this.like();
     }
   };
-  like = post_id => {
-    Axios.post(`/api/like/${this.props.post.post_id}`).then(res =>
-      this.getLikers()
-    );
-    this.setState({ likedHeart: true });
-  };
+
   unlike = () => {
     Axios.delete(`/api/unlike/${this.props.post.post_id}`).then(res =>
       this.getLikers()
     );
     this.setState({ likedHeart: false });
   };
+  like = async () => {
+    await Axios.post(`/api/like/${this.props.post.post_id}`).then(res => this.getLikers()
+    ).then(
+      this.setState({ likedHeart: true })
+    )
+    .catch(err => console.log(err))
+    this.likeNotification()
 
+  };
+  likeNotification = () => {
+    const {post} = this.props
+    Axios.post('/api/addnotification/', {receiver_id: post.author_id, post_id: post.post_id, is_comment: false, is_like: true, is_follow: false, comment_id: 155})
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  }
   // colors hearts red if the user has already liked it
   colorHearts = () => {
     let filtered = this.state.likers.filter(el => {
@@ -102,14 +111,6 @@ class MyPosts extends Component {
       .catch(err => console.log("Error getting comments.", err));
   };
 
-  // addComment = () => {
-  //   Axios.post(`/api/addcomment/${this.props.post.post_id}`, {
-  //     content: this.state.content
-  //   })
-  //     .then(res => this.getAllComments())
-  //     .catch(err => console.log(err));
-  //   this.setState({ content: "", addComment: false, viewComments: true });
-  // };
   addComment = async () => {
     const {post} = this.props
     await Axios.post(`/api/addcomment/${post.post_id}`, {

@@ -9,11 +9,11 @@ module.exports = {
         .catch(err => console.log(err))
     },
     unfollow: (req, res) => {
-        console.log('unfollow','req.body',req.body,'session',req.session.user.id)
+        console.log('unfollow','req.body',+req.body.followed_id,'session',req.session.user.id)
         const db = req.app.get('db')
         const {id} = req.session.user
         const {followed_id} = req.body 
-        db.followers.unfollow([id,followed_id])
+        db.followers.unfollow([id,+followed_id])
         .then(followers => res.status(200).send(followers))
         .catch(err => console.log(err))
     },

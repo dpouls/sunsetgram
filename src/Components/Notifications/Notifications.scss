@@ -23,6 +23,8 @@
 }
 .senderProfPic {
     height: 6vh;
+    width: 6vh;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -30,4 +32,32 @@
     width: 6vh;
     height: 6vh;
     object-fit: cover;
+}
+
+#followBtn{
+    background-color: rgba(43, 153, 243, 0.753);
+    border-radius: 5px;
+    border: none;
+    color: white;
+      transition: background-color .5s ;
+    &:hover {
+      background-color: rgb(53, 152, 233)
+    }
+    &:focus {
+      outline: none;
+    }
+}
+
+#unfollowBtn{
+    background-color: rgba(43, 153, 243, 0.753);
+    border-radius: 5px;
+    border: none;
+    color: white;
+      transition: background-color .5s ;
+    &:hover {
+      background-color: rgb(53, 152, 233)
+    }
+    &:focus {
+      outline: none;
+    }
 }

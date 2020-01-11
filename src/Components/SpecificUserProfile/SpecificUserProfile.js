@@ -51,9 +51,17 @@ class SpecificUserProfile extends Component {
       res => {
         this.getFollowers();
         this.setState({ followed: true });
+        this.followNotification()
       }
     );
   };
+
+  followNotification = () => {
+    const {post} = this.props
+    Axios.post('/api/addnotification/', {receiver_id: this.props.match.params.id, post_id: 1, is_comment: false, is_like: false, is_follow: true, comment_id: 155})
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
+  }
   unfollow = () => {
     Axios.post("/api/unfollow", {
       followed_id: this.props.match.params.id
@@ -95,7 +103,7 @@ class SpecificUserProfile extends Component {
         <section id="followButtonContainer">
           {this.state.followed ? (
             <button onClick={() => this.unfollow()} id="unfollowButton">
-              Unfollow
+              Following
             </button>
           ) : (
             <button id="followButton" onClick={() => this.follow()}>
