@@ -27,6 +27,34 @@ import "./TestFeed.scss";
 //       )
 //     };
 
+
+
+
+
+
+
+// addComment =  () => {
+//     const {post} = this.props
+//     Axios.post(`/api/addcomment/${post.post_id}`, {
+//       content: this.state.content
+//     })
+//       // .then(res => console.log(res.data[0]))
+//       .then(res => this.getAllComments())
+//       // .then(res => this.setState({newCommentId: res.data[0].comment_id}))
+//       .catch(err => console.log(err));
+//       this.setState({ content: "", addComment: false, viewComments: true });
+      
+//     //   await Axios.post('/api/addnotification/', {receiver_id: post.author_id, post_id: post.post_id, is_comment: true, is_like: false, is_follow: false,comment_id: this.state.newCommentId})
+//     //   .then(res => console.log(res.data))
+//     //   .catch(err => console.log(err))
+      
+//     };
+
+
+
+
+
+
     
     class TestFeed extends Component {
             constructor() {

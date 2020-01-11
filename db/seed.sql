@@ -68,3 +68,25 @@ followed_id
 ) values (
 1,3
 )
+
+create table notifications (
+notification_id serial primary key,
+sender_id int references users(id),
+receiver_id int references users(id),
+post_id int references posts(post_id),
+is_comment boolean,
+is_like boolean, 
+is_follow boolean
+)
+
+insert into notifications (
+sender_id,
+receiver_id,
+post_id,
+is_comment,
+is_like,
+is_follow
+
+) values (
+10,3,77,false,true,false
+)

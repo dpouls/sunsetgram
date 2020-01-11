@@ -20,7 +20,8 @@ class IndividualPost extends Component {
       caption: "",
       commentMenu: false,
       postMenu: false,
-      editPost: false
+      editPost: false,
+      newComment: 0
     };
   }
   componentDidMount = async () => {
@@ -109,15 +110,29 @@ class IndividualPost extends Component {
   };
 
 
-  addComment = () => {
-    Axios.post(`/api/addcomment/${this.state.thisPost.post_id}`, {
+  // addComment = () => {
+  //   Axios.post(`/api/addcomment/${this.state.thisPost.post_id}`, {
+  //     content: this.state.content
+  //   })
+  //     .then(res => this.getAllComments())
+  //     .catch(err => console.log(err));
+  //   this.setState({ content: "", addComment: false, viewComments: true });
+  // };
+  addComment = async () => {
+    const post = this.state.thisPost
+    await Axios.post(`/api/addcomment/${this.state.thisPost.post_id}`, {
       content: this.state.content
     })
+      .then(res => this.setState({newCommentId: res.data[0].comment_id}))
       .then(res => this.getAllComments())
       .catch(err => console.log(err));
-    this.setState({ content: "", addComment: false, viewComments: true });
-  };
-
+      this.setState({ content: "", addComment: false, viewComments: true })
+      
+      Axios.post('/api/addnotification/', {receiver_id: post.author_id, post_id: post.post_id, is_comment: true, is_like: false, is_follow: false,comment_id: this.state.newCommentId})
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+      
+    };
 
   // TOGGLES FOR RENDERING 
 

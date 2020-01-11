@@ -102,14 +102,28 @@ class MyPosts extends Component {
       .catch(err => console.log("Error getting comments.", err));
   };
 
-  addComment = () => {
-    Axios.post(`/api/addcomment/${this.props.post.post_id}`, {
+  // addComment = () => {
+  //   Axios.post(`/api/addcomment/${this.props.post.post_id}`, {
+  //     content: this.state.content
+  //   })
+  //     .then(res => this.getAllComments())
+  //     .catch(err => console.log(err));
+  //   this.setState({ content: "", addComment: false, viewComments: true });
+  // };
+  addComment = async () => {
+    const {post} = this.props
+    await Axios.post(`/api/addcomment/${post.post_id}`, {
       content: this.state.content
     })
+      .then(res => this.setState({newCommentId: res.data[0].comment_id}))
       .then(res => this.getAllComments())
       .catch(err => console.log(err));
-    this.setState({ content: "", addComment: false, viewComments: true });
-  };
+      this.setState({ content: "", addComment: false, viewComments: true })
+      
+      Axios.post('/api/addnotification/', {receiver_id: post.author_id, post_id: post.post_id, is_comment: true, is_like: false, is_follow: false,comment_id: this.state.newCommentId})
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+  }
   // TOGGLES FOR RENDERING
 
   toggleAddComment = () => {
@@ -247,7 +261,7 @@ class MyPosts extends Component {
         {this.state.viewComments ? (
           <div id="allCommentsContainer">
             {comments
-              .sort((a, b) => b.comment_id - a.comment_id)
+              .sort((a, b) => a.comment_id - b.comment_id)
               .map((comment, index) => {
                 return (
                   <Comments

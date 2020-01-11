@@ -1,0 +1,33 @@
+#notification_page {
+    width: 100%;
+}
+.notificationContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    min-height: 9vh;
+    padding: 0 10px;
+    // background-color: lightblue;
+    border-bottom: 2px solid rgb(214, 214, 214);
+
+}
+.message {
+    margin-left: 5px;
+    width: 65%;
+    min-height: 6vh;
+    font-size: 15pt;
+    // background-color: lightblue;
+    overflow-wrap: break-word;
+    
+}
+.senderProfPic {
+    height: 6vh;
+    border-radius: 50%;
+}
+
+.postThumbnail {
+    width: 6vh;
+    height: 6vh;
+    object-fit: cover;
+}

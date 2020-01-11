@@ -12,7 +12,7 @@ module.exports = {
         const {id} = req.session.user
         const db = req.app.get('db')
         db.post.comments.add_comment([post_id,id,content])
-        .then(comments => res.status(200).send(comments))
+        .then(comment => res.status(200).send(comment))
         .catch(err => console.log(err))
     },
     deleteComment: (req, res) => {

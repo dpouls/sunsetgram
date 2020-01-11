@@ -61,7 +61,7 @@ class Profile extends Component {
           <img
             id="profilePic"
             src={this.props.userReducer.user.profile_img}
-            alt="profile pic"
+            alt=""
           />
           <section id="statsContainer">
             <section>

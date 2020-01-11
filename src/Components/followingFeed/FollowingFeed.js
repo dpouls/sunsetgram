@@ -7,23 +7,33 @@ class FollowingFeed extends Component {
   constructor() {
     super();
     this.state = {
-      posts: []
+      posts: [],
+      myPosts: []
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
     this.getPosts();
-    
+    this.getMyPosts();
   };
   getPosts = async () => {
     await Axios.get("/api/followingposts").then(res => {
       this.setState({ posts: res.data });
     });
-    console.log(this.state.posts)
+    // this.getMyPosts()
   };
-
+  getMyPosts = () => {
+    Axios.get(`/api/myposts`)
+      .then(res => {
+        this.setState({ myPosts: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+  
   render() {
-    const { posts } = this.state;
+    console.log(this.state.posts)
+    const { posts, myPosts } = this.state;
+    const allPosts = [...posts, ...myPosts];
     return (
       <div id="wholeFeedContainer">
         <div id="feedHeaderContainer">
@@ -34,8 +44,8 @@ class FollowingFeed extends Component {
         </div>
 
         <div className="feedPostContainer">
-          {posts.length > 0 ? (
-            posts
+          {allPosts.length > 0 ? (
+            allPosts
               .sort((a, b) => b.post_id - a.post_id)
               .map((post, index) => (
                 <FollowingPosts

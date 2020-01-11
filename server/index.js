@@ -11,6 +11,7 @@ const express = require('express'),
       uc = require('./controllers/userController'),
       fc = require('./controllers/followerController'),
       sc = require('./controllers/specificController'),
+      nc = require('./controllers/notificationController'),
       folC = require('./controllers/followingController'),
       aws = require('aws-sdk'),
       gradient = require('gradient-string'),
@@ -52,6 +53,10 @@ app.get('/api/getfollowing', fc.getFollowing)
 app.get('/api/specificuserinfo/:id',sc.getSpecificUserInfo)
 app.get('/api/getspecificfollowers/:id', fc.getSpecificUserFollowers)
 app.get('/api/getspecificfollowing/:id', fc.getSpecificUserFollowing)
+
+//NOTIFICATION ENDPOINTS
+app.get('/api/mynotifications', nc.getMyNotifications)
+app.post('/api/addnotification', nc.addNotification)
 
 
 //POST ENDPOINTS

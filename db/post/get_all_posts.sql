@@ -1,2 +1,2 @@
-select * from posts
-join users u on u.id = posts.author_id
+select * from posts p
+join users u on u.id = p.author_id

@@ -16,6 +16,7 @@ function App(props) {
     .then((res) => {
       props.getUser(res.data)
     })
+    // .catch(err => props.history.push('/'))
   },[])
   return (
     <div id='wholeThing'>
