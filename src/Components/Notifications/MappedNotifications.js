@@ -110,7 +110,7 @@ return (
     <>      
    {props.thisNotification.is_like ? (
       <div className="notificationContainer">  
- <img className="senderProfPic" src={props.thisNotification.profile_img} alt="profpic" />
+ <img className="senderProfPic" src={props.thisNotification.profile_img ? props.thisNotification.profile_img : `https://robohash.org/${props.thisNotification.username}?set=set5`} alt="profpic" />
  <div className='message'>
      <strong>{props.thisNotification.username}</strong>{' '}liked your photo.
      </div>
@@ -122,7 +122,7 @@ return (
      </div>
    ) : props.thisNotification.is_comment ? (
       <div className="notificationContainer">  
- <img className="senderProfPic" src={props.thisNotification.profile_img} alt="profpic" />
+ <img className="senderProfPic" src={props.thisNotification.profile_img ? props.thisNotification.profile_img : `https://robohash.org/${props.thisNotification.username}?set=set5`} alt="profpic" />
 
          <div className='message'>
          <strong>{props.thisNotification.username}</strong>{' '}commented:{' '}{props.thisNotification.contents}
@@ -137,7 +137,7 @@ return (
      </div>
    ) : props.thisNotification.is_follow ? (
       <div className="notificationContainer">
- <img className="senderProfPic" src={props.thisNotification.profile_img} alt="profpic" />
+ <img className="senderProfPic" src={props.thisNotification.profile_img ? props.thisNotification.profile_img : `https://robohash.org/${props.thisNotification.username}?set=set5`} alt="profpic" />
 
 
          <div className='message'>

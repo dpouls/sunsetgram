@@ -146,7 +146,7 @@ class SpecificUserPosts extends Component {
           <div className="postHeaderUserInfoContainer">
             <img
               className="postHeaderPic"
-              src={this.props.post.profile_img}
+              src={this.props.post.profile_img ? this.props.post.profile_img :`https://robohash.org/${this.props.post.username}?set=set5` }
               alt=""
             />
             <p>{this.props.post.username}</p>

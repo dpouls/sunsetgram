@@ -1,3 +1,5 @@
+delete from notifications where post_id = ($1);
+
 delete from likes
 where post_id = ($1);
 

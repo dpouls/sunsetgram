@@ -60,7 +60,7 @@ class Profile extends Component {
         <section id="profPicUserStatsContainer">
           <img
             id="profilePic"
-            src={this.props.userReducer.user.profile_img}
+            src={this.props.userReducer.user.profile_img ? this.props.userReducer.user.profile_img : `https://robohash.org/${this.props.userReducer.user.username}?set=set5`}
             alt=""
           />
           <section id="statsContainer">

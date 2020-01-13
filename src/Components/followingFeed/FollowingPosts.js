@@ -33,14 +33,14 @@ class FollowingPosts extends Component {
     await Axios.put(`/api/editpost/${this.props.post.post_id}`, {
       caption: this.state.caption
     })
-      .then(res => this.props.getPostsFn())
+      .then(res => this.props.getMyPostsFn())
       .catch(err => console.log(err));
     this.setState({ caption: "" });
     this.toggleEditPost();
   };
   deletePost = () => {
     Axios.delete(`/api/delete/${this.props.post.post_id}`).then(res =>
-      this.props.getPostsFn()
+      this.props.getMyPostsFn()
     );
   };
   componentDidUpdate = (prevProps, prevState) => {
@@ -169,7 +169,7 @@ class FollowingPosts extends Component {
           >
             <img
               className="postHeaderPic"
-              src={this.props.post.profile_img}
+              src={this.props.post.profile_img ? this.props.post.profile_img : `https://robohash.org/${this.props.post.username}?set=set5`}
               alt=""
             />
             <p>{this.props.post.username}</p>

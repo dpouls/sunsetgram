@@ -72,6 +72,7 @@ class SpecificUserProfile extends Component {
   };
 
   render() {
+    console.log(this.state.user)
     return (
       <div id="wholeProfile">
         <section id="profileHeader">
@@ -80,7 +81,7 @@ class SpecificUserProfile extends Component {
         <section id="profPicUserStatsContainer">
           <img
             id="profilePic"
-            src={this.state.user[0] && this.state.user[0].profile_img}
+            src={this.state.user[0] && this.state.user[0].profile_img ? this.state.user[0] && this.state.user[0].profile_img :  this.state.user[0] &&  `https://robohash.org/${this.state.user[0].username}?set=set5` }
             alt="profile pic"
           />
           <section id="statsContainer">

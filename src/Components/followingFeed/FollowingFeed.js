@@ -39,9 +39,9 @@ class FollowingFeed extends Component {
         <div id="feedHeaderContainer">
           <div id="feedHeader">Sunny</div>
         </div>
-        <div id="stories">
+        {/* <div id="stories">
           <p>FUTURE STORIES GO HERE</p>
-        </div>
+        </div> */}
 
         <div className="feedPostContainer">
           {allPosts.length > 0 ? (
@@ -49,6 +49,7 @@ class FollowingFeed extends Component {
               .sort((a, b) => b.post_id - a.post_id)
               .map((post, index) => (
                 <FollowingPosts
+                   getMyPostsFn={this.getMyPosts}
                   getPostsFn={this.getPosts}
                   index={index}
                   post={post}

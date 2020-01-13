@@ -176,7 +176,7 @@ class IndividualPost extends Component {
           <div onClick={() => {this.goToProfile()}} className="postHeaderUserInfoContainer">
             <img
               className="postHeaderPic"
-              src={thisPost.profile_img}
+              src={thisPost.profile_img ? thisPost.profile_img :`https://robohash.org/${thisPost.username}?set=set5`}
               alt=""
             />
             <p>{thisPost.username}</p>
