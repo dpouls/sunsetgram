@@ -146,7 +146,7 @@ return (
           <section id="followContainer">
           {followed ? (
             <button onClick={() => unfollow()} id="unfollowBtn">
-              Unfollow
+              Following
             </button>
           ) : (
             <button id="followBtn" onClick={() => follow()}>
