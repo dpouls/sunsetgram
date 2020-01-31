@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-#profileHeader {
+#wholeProfile #profileHeader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,7 +20,7 @@
   font-size: 18pt;
 }
 
-#profPicUserStatsContainer {
+#wholeProfile #profPicUserStatsContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,13 +35,16 @@
           box-sizing: border-box;
 }
 
-#statsContainer {
+#wholeProfile #statsContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   font-weight: bold;
   width: 70%;
@@ -50,7 +53,21 @@
           box-sizing: border-box;
 }
 
-#profilePic {
+#wholeProfile .num-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+}
+
+#wholeProfile #profilePic {
   height: 10vh;
   width: 10vh;
   border-radius: 50%;
@@ -59,18 +76,18 @@
      object-fit: cover;
 }
 
-.statsWords {
+#wholeProfile .statsWords {
   font-size: 10pt;
 }
 
-#editProfileButton {
+#wholeProfile #editProfileButton {
   width: 90%;
   border-radius: 5px;
   background-color: #faf9f9;
   border: 1px solid #e2e2e2;
 }
 
-#editContainer {
+#wholeProfile #editContainer {
   width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -80,11 +97,11 @@
           justify-content: flex-start;
 }
 
-#allMyPostsContainer {
+#wholeProfile #allMyPostsContainer {
   width: 100%;
 }
 
-#editProfileButtonContainer {
+#wholeProfile #editProfileButtonContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,7 +118,7 @@
   margin: 20px 0;
 }
 
-#unfollowButton {
+#wholeProfile #unfollowButton {
   background-color: rgba(53, 152, 233, 0.493);
   width: 30%;
   padding: 5px;
@@ -113,15 +130,15 @@
   transition: background-color .5s;
 }
 
-#unfollowButton:hover {
+#wholeProfile #unfollowButton:hover {
   background-color: #3598e9;
 }
 
-#unfollowButton:focus {
+#wholeProfile #unfollowButton:focus {
   outline: none;
 }
 
-#followButton {
+#wholeProfile #followButton {
   background-color: rgba(53, 152, 233, 0.493);
   width: 30%;
   padding: 5px;
@@ -133,15 +150,15 @@
   transition: background-color .5s;
 }
 
-#followButton:hover {
+#wholeProfile #followButton:hover {
   background-color: #3598e9;
 }
 
-#followButton:focus {
+#wholeProfile #followButton:focus {
   outline: none;
 }
 
-#followButtonContainer {
+#wholeProfile #followButtonContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

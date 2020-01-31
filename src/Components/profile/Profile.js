@@ -64,15 +64,15 @@ class Profile extends Component {
             alt=""
           />
           <section id="statsContainer">
-            <section>
-              <p>{this.state.myPosts.length}</p>
+            <section id='not-cooperating' className='num-name'>
+              <section>{this.state.myPosts.length}</section>
               <p className="statsWords">Posts</p>
             </section>
-            <section>
+            <section className='num-name'>
               <section>{this.state.followers.length}</section>
               <p className="statsWords">Followers</p>
             </section>
-            <section>
+            <section className='num-name'>
               <section>{this.state.following.length}</section>
               <p className="statsWords">Following</p>
             </section>

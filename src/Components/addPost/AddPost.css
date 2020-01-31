@@ -15,11 +15,11 @@
   padding-bottom: 15vh;
 }
 
-#placeholderImage {
+#wholeAddPostContainer #placeholderImage {
   width: 100%;
 }
 
-#inputContainer {
+#wholeAddPostContainer #inputContainer {
   height: 8em;
   width: 100%;
   display: -webkit-box;
@@ -36,7 +36,7 @@
           align-items: center;
 }
 
-.inputs {
+#wholeAddPostContainer .inputs {
   width: 90%;
   font-size: 15pt;
   background-color: rgba(161, 161, 161, 0.253);
@@ -45,15 +45,15 @@
   padding: 8px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transition: ease .5s;
-  transition: ease .5s;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
 }
 
-.inputs:focus {
+#wholeAddPostContainer .inputs:focus {
   outline: none;
 }
 
-.addPostButton {
+#wholeAddPostContainer .addPostButton {
   background-color: rgba(53, 152, 233, 0.493);
   width: 90%;
   padding: 10px;
@@ -62,15 +62,15 @@
   border-radius: 10px;
   border: none;
   color: white;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
 }
 
-.addPostButton:hover {
+#wholeAddPostContainer .addPostButton:hover {
   background-color: #3598e9;
 }
 
-.addPostButton:focus {
+#wholeAddPostContainer .addPostButton:focus {
   outline: none;
 }
 
@@ -91,9 +91,6 @@
         -ms-flex-align: center;
             align-items: center;
   }
-}
-
-@media screen and (min-width: 1100px) {
   #placeholderImage {
     width: 70%;
     -o-object-fit: contain;

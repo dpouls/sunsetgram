@@ -1,3 +1,103 @@
+#wholeAddPostContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 90vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 10vh;
+  padding-bottom: 15vh;
+}
+
+#wholeAddPostContainer #placeholderImage {
+  width: 100%;
+}
+
+#wholeAddPostContainer #inputContainer {
+  height: 8em;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#wholeAddPostContainer .inputs {
+  width: 90%;
+  font-size: 15pt;
+  background-color: rgba(161, 161, 161, 0.253);
+  border-radius: 10px;
+  border: 1px solid rgba(155, 155, 155, 0.377);
+  padding: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
+}
+
+#wholeAddPostContainer .inputs:focus {
+  outline: none;
+}
+
+#wholeAddPostContainer .addPostButton {
+  background-color: rgba(53, 152, 233, 0.493);
+  width: 90%;
+  padding: 10px;
+  margin: 0 30px;
+  font-size: 15pt;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+}
+
+#wholeAddPostContainer .addPostButton:hover {
+  background-color: #3598e9;
+}
+
+#wholeAddPostContainer .addPostButton:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 1100px) {
+  #inputContainer {
+    height: 8em;
+    width: 750px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #placeholderImage {
+    width: 70%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+
 .App {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6,13 +106,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   font-family: 'IBM Plex Sans', sans-serif;
   padding-bottom: 8vh;
   min-height: 100vh;
-  width: 100%;
   -webkit-box-shadow: 5px 5px 10px 5px grey;
           box-shadow: 5px 5px 10px 5px grey;
 }

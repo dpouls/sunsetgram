@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-.gallery {
+#discoverPageContainer .gallery {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -18,7 +18,7 @@
   grid-gap: 2px;
 }
 
-#searchContainer {
+#discoverPageContainer #searchContainer {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -36,7 +36,7 @@
   padding: 2%;
 }
 
-#searchBar {
+#discoverPageContainer #searchBar {
   width: 80%;
   height: 5vh;
   border-radius: 10px;
@@ -45,11 +45,11 @@
   padding: 0 5% 0 12%;
 }
 
-#searchBar:focus {
+#discoverPageContainer #searchBar:focus {
   outline: none;
 }
 
-#searchGlass {
+#discoverPageContainer #searchGlass {
   position: relative;
   left: 30px;
 }

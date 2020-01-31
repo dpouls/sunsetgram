@@ -2,11 +2,11 @@
   width: 100%;
 }
 
-.images {
+#wholePostContainer .images {
   width: 100%;
 }
 
-.postHeader {
+#wholePostContainer .postHeader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,7 +20,7 @@
   font-size: 15pt;
 }
 
-.postHeaderUserInfoContainer {
+#wholePostContainer .postHeaderUserInfoContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,7 +34,7 @@
           align-items: center;
 }
 
-.postHeaderPic {
+#wholePostContainer .postHeaderPic {
   height: 4vh;
   width: 4vh;
   -o-object-fit: cover;
@@ -46,7 +46,7 @@
   border: 1px solid;
 }
 
-.postMenu {
+#wholePostContainer .postMenu {
   width: 30%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -56,7 +56,7 @@
           justify-content: space-between;
 }
 
-.likeCommentSendSaveContainer {
+#wholePostContainer .likeCommentSendSaveContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,19 +71,19 @@
   font-weight: 100;
 }
 
-#commentIcon {
+#wholePostContainer #commentIcon {
   margin: 0px 15px;
 }
 
-#likedHeart {
+#wholePostContainer #likedHeart {
   color: red;
 }
 
-#unlikedHeart {
+#wholePostContainer #unlikedHeart {
   color: black;
 }
 
-#likeDisplay {
+#wholePostContainer #likeDisplay {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,12 +92,12 @@
   padding-left: 2%;
 }
 
-p {
+#wholePostContainer p {
   margin: 0;
   text-decoration: none;
 }
 
-#captionContainer {
+#wholePostContainer #captionContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,15 +114,15 @@ p {
   word-wrap: break-word;
 }
 
-#captionEditSubmit {
-  color: #3599E9;
+#wholePostContainer #captionEditSubmit {
+  color: #3599e9;
 }
 
-#caption {
+#wholePostContainer #caption {
   width: 100%;
 }
 
-#allCommentsContainer {
+#wholePostContainer #allCommentsContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,14 +139,14 @@ p {
   margin-bottom: 4%;
 }
 
-#viewComments {
+#wholePostContainer #viewComments {
   padding-left: 4%;
   font-size: 15pt;
   text-align: left;
   margin-bottom: 4%;
 }
 
-#addCommentContainer {
+#wholePostContainer #addCommentContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -160,7 +160,7 @@ p {
   font-size: 15pt;
 }
 
-.addCommentInput {
+#wholePostContainer .addCommentInput {
   border-radius: 10px;
   background-color: none;
   border: none;
@@ -170,12 +170,12 @@ p {
   transition: none;
 }
 
-.addCommentInput:focus {
+#wholePostContainer .addCommentInput:focus {
   outline: none;
 }
 
-#addCommentButton {
+#wholePostContainer #addCommentButton {
   border-radius: 10px;
-  color: #3599E9;
+  color: #3599e9;
 }
 /*# sourceMappingURL=AllPosts.css.map */

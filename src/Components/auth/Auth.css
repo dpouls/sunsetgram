@@ -1,5 +1,5 @@
 #title {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-size: 10vh;
 }
 
@@ -23,7 +23,7 @@
           box-sizing: border-box;
 }
 
-.loginInputContainer {
+#authContainer .loginInputContainer {
   height: 15vh;
   width: 100%;
   display: -webkit-box;
@@ -40,7 +40,7 @@
           align-items: center;
 }
 
-.loginInputContainer .loginInputs {
+#authContainer .loginInputContainer .loginInputs {
   width: 90%;
   font-size: 15pt;
   background-color: rgba(161, 161, 161, 0.253);
@@ -49,15 +49,15 @@
   padding: 8px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  -webkit-transition: ease .5s;
-  transition: ease .5s;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
 }
 
-.loginInputContainer .loginInputs:focus {
+#authContainer .loginInputContainer .loginInputs:focus {
   outline: none;
 }
 
-.loginButton {
+#authContainer .loginButton {
   background-color: rgba(53, 152, 233, 0.493);
   width: 90%;
   padding: 10px;
@@ -66,31 +66,31 @@
   border-radius: 10px;
   border: none;
   color: white;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
 }
 
-.loginButton:hover {
+#authContainer .loginButton:hover {
   background-color: #3598e9;
 }
 
-.loginButton:focus {
+#authContainer .loginButton:focus {
   outline: none;
 }
 
-#registerContainer {
+#authContainer #registerContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   color: grey;
 }
 
-#registerContainer #signUp {
-  color: #3599E9;
-  margin-left: .5em;
+#authContainer #registerContainer #signUp {
+  color: #3599e9;
+  margin-left: 0.5em;
 }
 
-#haveAccount {
-  color: #3599E9;
+#authContainer #haveAccount {
+  color: #3599e9;
 }
 /*# sourceMappingURL=Auth.css.map */

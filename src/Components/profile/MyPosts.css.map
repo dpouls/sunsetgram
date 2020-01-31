@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,uBAAuB,CAAC;EACpB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,SAAS;CACpB;;AACD,AAAA,SAAS,CAAC;EACN,KAAK,EAAE,IAAI;CAEd",
+    "mappings": "AAEA,AAAA,uBAAuB,CAAC;ECKtB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EDJpB,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EACvB,KAAK,ECNM,IAAI;EDOf,MAAM,EAAE,SAAS;CACpB;;AACD,AAAA,SAAS,CAAC;EACN,KAAK,ECVM,IAAI;CDWlB",
     "sources": [
-        "MyPosts.scss"
+        "MyPosts.scss",
+        "../../variables.scss"
     ],
     "names": [],
     "file": "MyPosts.css"

@@ -24,13 +24,23 @@
     #statsContainer {
         @include flexRow;
         justify-content: space-between;
+        align-items: center;
         text-align: center;
         font-weight: bold;
         width: 70%;
         padding-right: 2%;
         box-sizing: border-box;
     }
-    
+    // #not-cooperating {
+    //     height: 70px;
+    // }
+    .num-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        // background-color: hotpink;
+    }
     #profilePic {
         height: 10vh;
         width: 10vh;
