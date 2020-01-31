@@ -31,7 +31,7 @@ class FollowingFeed extends Component {
   };
   
   render() {
-    console.log(this.state.posts)
+    // console.log(this.state.posts)
     const { posts, myPosts } = this.state;
     const allPosts = [...posts, ...myPosts];
     return (
@@ -49,7 +49,7 @@ class FollowingFeed extends Component {
               .sort((a, b) => b.post_id - a.post_id)
               .map((post, index) => (
                 <FollowingPosts
-                   getMyPostsFn={this.getMyPosts}
+                  getMyPostsFn={this.getMyPosts}
                   getPostsFn={this.getPosts}
                   index={index}
                   post={post}

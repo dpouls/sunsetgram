@@ -1,0 +1,152 @@
+#wholeProfile {
+  width: 100%;
+}
+
+#profileHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 2% 0 45%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  font-size: 18pt;
+}
+
+#profPicUserStatsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 5vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#statsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  font-weight: bold;
+  width: 70%;
+  padding-right: 2%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#profilePic {
+  height: 10vh;
+  width: 10vh;
+  border-radius: 50%;
+  border: 1px solid;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.statsWords {
+  font-size: 10pt;
+}
+
+#editProfileButton {
+  width: 90%;
+  border-radius: 5px;
+  background-color: #faf9f9;
+  border: 1px solid #e2e2e2;
+}
+
+#editContainer {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+#allMyPostsContainer {
+  width: 100%;
+}
+
+#editProfileButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0;
+}
+
+#unfollowButton {
+  background-color: rgba(53, 152, 233, 0.493);
+  width: 30%;
+  padding: 5px;
+  margin: 0 30px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+#unfollowButton:hover {
+  background-color: #3598e9;
+}
+
+#unfollowButton:focus {
+  outline: none;
+}
+
+#followButton {
+  background-color: rgba(53, 152, 233, 0.493);
+  width: 30%;
+  padding: 5px;
+  margin: 0 30px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+#followButton:hover {
+  background-color: #3598e9;
+}
+
+#followButton:focus {
+  outline: none;
+}
+
+#followButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=Profile.css.map */

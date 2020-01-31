@@ -1,0 +1,21 @@
+$hundredWidth: 100%;
+$buttonColor: rgba(53, 152, 233, 0.493);
+$buttonHoverColor: rgb(53, 152, 233);
+$inputBackgroundColor: rgba(161, 161, 161, 0.253);
+$inputBorderColor: rgba(155, 155, 155, 0.377);
+$blueText: #3599e9;
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flexRow {
+  display: flex;
+}
+@mixin columnCenter {
+    justify-content: center;
+    align-content: center;
+}
+@mixin rowCenter {
+    justify-content: center;
+    align-items: center;
+}

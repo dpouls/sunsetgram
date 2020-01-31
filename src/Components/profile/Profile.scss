@@ -1,118 +1,125 @@
+@import '../../variables.scss';
 #wholeProfile {
-    width: 100%;
-}
-#profileHeader {
-    display: flex;
-    padding: 0 2% 0 45%;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    text-align: center;
-    width: 100%;
-    font-size: 18pt;
-}
+    width: $hundredWidth;
 
-#profPicUserStatsContainer {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 5vw;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-#statsContainer {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    font-weight: bold;
-    width: 70%;
-    padding-right: 2%;
-    box-sizing: border-box;
-    // border:1px solid black;
-}
-
-#profilePic {
-    height: 10vh;
-    width: 10vh;
-    border-radius: 50%;
-    border: 1px solid;
-    object-fit: cover;
-    // object-position: center;
-}
-
-.statsWords {
-    font-size: 10pt;
-}
-
-#editProfileButton {
-    width: 90%;
-    border-radius: 5px;
-    background-color: rgb(250, 249, 249);
-    border: 1px solid rgb(226, 226, 226);
+    #profileHeader {
+        @include flexRow;
+        padding: 0 2% 0 45%;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        text-align: center;
+        width: $hundredWidth;
+        font-size: 18pt;
+    }
     
-}
-
-// #allMyPostsContainer {
-
-// }
-
-#editContainer {
-    width: 90%;
-    display: flex;
-    justify-content: flex-start;
-    // align-items: center;
-    // align-content: center;
-    // background-color: red;
-}
-#allMyPostsContainer {
-    width: 100%;
-}
-#editProfileButtonContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+    #profPicUserStatsContainer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5vw;
+        align-items: center;
+        box-sizing: border-box;
+    }
     
-}
+    #statsContainer {
+        @include flexRow;
+        justify-content: space-between;
+        text-align: center;
+        font-weight: bold;
+        width: 70%;
+        padding-right: 2%;
+        box-sizing: border-box;
+    }
+    
+    #profilePic {
+        height: 10vh;
+        width: 10vh;
+        border-radius: 50%;
+        border: 1px solid;
+        object-fit: cover;
+    }
+    
+    .statsWords {
+        font-size: 10pt;
+    }
+    
+    #editProfileButton {
+        width: 90%;
+        border-radius: 5px;
+        background-color: rgb(250, 249, 249);
+        border: 1px solid rgb(226, 226, 226);
+        
+    }
+    
+    
+    #editContainer {
+        width: 90%;
+        @include flexRow;
+        justify-content: flex-start;
 
-#unfollowButton{
-    background-color: rgba(53, 152, 233, 0.493);
-    width: 30%;
-    padding: 5px;
-    margin: 0 30px;
-    // font-size: 15pt;
-    border-radius: 10px;
-    border: none;
-    color: white;
-      transition: background-color .5s ;
-    &:hover {
-      background-color: rgb(53, 152, 233)
     }
-    &:focus {
-      outline: none;
+    #allMyPostsContainer {
+        width: $hundredWidth;
     }
-}
+    #editProfileButtonContainer {
+        @include flexColumn;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        
+    }
+    
+    #unfollowButton{
+        background-color: rgba(53, 152, 233, 0.493);
+        width: 30%;
+        padding: 5px;
+        margin: 0 30px;
+        // font-size: 15pt;
+        border-radius: 10px;
+        border: none;
+        color: white;
+          transition: background-color .5s ;
+        &:hover {
+          background-color: rgb(53, 152, 233)
+        }
+        &:focus {
+          outline: none;
+        }
+    }
+    
+    #followButton {
+        background-color: rgba(53, 152, 233, 0.493);
+        width: 30%;
+        padding: 5px;
+        margin: 0 30px;
+        // font-size: 15pt;
+        border-radius: 10px;
+        border: none;
+        color: white;
+          transition: background-color .5s ;
+        &:hover {
+          background-color: rgb(53, 152, 233)
+        }
+        &:focus {
+          outline: none;
+        }
+    }
+    
+    #followButtonContainer {
+        @include flexRow;
+        justify-content: center;
+    }
 
-#followButton {
-    background-color: rgba(53, 152, 233, 0.493);
-    width: 30%;
-    padding: 5px;
-    margin: 0 30px;
-    // font-size: 15pt;
-    border-radius: 10px;
-    border: none;
-    color: white;
-      transition: background-color .5s ;
-    &:hover {
-      background-color: rgb(53, 152, 233)
-    }
-    &:focus {
-      outline: none;
-    }
-}
 
-#followButtonContainer {
-    display: flex;
-    justify-content: center;
+
+
+
+
+
+
+
+
+
+
+
 }

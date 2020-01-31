@@ -1,0 +1,37 @@
+#eachComment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  padding: 0 4%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#commentMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 20%;
+}
+
+.commentButtons {
+  margin: 0 10px;
+}
+
+#editCommentSubmit {
+  color: #3599E9;
+}
+
+#editCommentInputButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=Comments.css.map */

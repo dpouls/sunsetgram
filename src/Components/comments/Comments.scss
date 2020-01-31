@@ -1,16 +1,18 @@
+@import "../../variables.scss";
+
+
 #eachComment {
-    display: flex;
+    @include flexRow;
     justify-content: space-between;
-    width: 100%;
+    width: $hundredWidth;
     padding: 0 4%;
     // border: 1px solid blue;
     box-sizing: border-box;
 }
 
 #commentMenu {
-   display: flex;
+@include flexRow;
    justify-content: space-between;
-//    border: 1px solid;
    width: 20%;
 }
 .commentButtons {
@@ -18,7 +20,7 @@
 }
 
 #editCommentSubmit {
-    color: #3599E9;
+    color: $blueText;
 
 }
 

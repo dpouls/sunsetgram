@@ -26,7 +26,7 @@ class FollowingPosts extends Component {
   
   componentDidMount = async () => {
     await this.getLikers();
-    this.colorHearts();
+    await this.colorHearts();
     this.getAllComments();
   };
   editPost = async () => {
@@ -45,7 +45,7 @@ class FollowingPosts extends Component {
   };
   componentDidUpdate = (prevProps, prevState) => {
     if (this.props.post.caption !== prevProps.post.caption) {
-      this.props.getPostsFn();
+      this.props.getMyPostsFn();
     }
   };
 
@@ -56,6 +56,7 @@ class FollowingPosts extends Component {
     await Axios.get(`/api/likers/${this.props.post.post_id}`).then(res => {
       this.setState({ likers: res.data });
     });
+  
   };
 
   //determines if user has liked the post and whether to like or unlike the picture if the button is pressed again
@@ -153,7 +154,7 @@ class FollowingPosts extends Component {
   };
 
   render() {
-
+    console.log('Likers', this.state.likers)
     const { comments, content } = this.state;
     // console.log(this.props.post)
     return (

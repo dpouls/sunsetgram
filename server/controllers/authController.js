@@ -25,6 +25,7 @@ module.exports = {
         const {username, password} = req.body 
         const {session} = req
         const db = req.app.get('db')
+        
         // console.log('body', req.body)
       
         let user = await db.user.check_user(username)

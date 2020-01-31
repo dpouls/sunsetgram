@@ -1,0 +1,181 @@
+#wholePostContainer {
+  width: 100%;
+}
+
+.images {
+  width: 100%;
+}
+
+.postHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 4%;
+  font-size: 15pt;
+}
+
+.postHeaderUserInfoContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 15pt;
+  font-weight: bold;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.postHeaderPic {
+  height: 4vh;
+  width: 4vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin: 10px 20px 10px 0;
+  border: 1px solid;
+}
+
+.postMenu {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.likeCommentSendSaveContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 5%;
+  font-size: 25pt;
+  font-weight: 100;
+}
+
+#commentIcon {
+  margin: 0px 15px;
+}
+
+#likedHeart {
+  color: red;
+}
+
+#unlikedHeart {
+  color: black;
+}
+
+#likeDisplay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 15pt;
+  font-weight: bold;
+  padding-left: 2%;
+}
+
+p {
+  margin: 0;
+  text-decoration: none;
+}
+
+#captionContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  padding-left: 4%;
+  font-size: 15pt;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+#captionEditSubmit {
+  color: #3599E9;
+}
+
+#caption {
+  width: 100%;
+}
+
+#allCommentsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  font-size: 15pt;
+  width: 98%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  word-wrap: break-word;
+  margin-bottom: 4%;
+}
+
+#viewComments {
+  padding-left: 4%;
+  font-size: 15pt;
+  text-align: left;
+  margin-bottom: 4%;
+}
+
+#addCommentContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+  padding-left: 4%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 15pt;
+}
+
+.addCommentInput {
+  border-radius: 10px;
+  background-color: none;
+  border: none;
+  padding: 5px;
+  font-size: 15pt;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.addCommentInput:focus {
+  outline: none;
+}
+
+#addCommentButton {
+  border-radius: 10px;
+  color: #3599E9;
+}
+/*# sourceMappingURL=AllPosts.css.map */

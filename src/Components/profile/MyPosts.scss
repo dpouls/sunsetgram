@@ -1,18 +1,12 @@
-
+@import '../../variables.scss';
 
 #eachWholePostContainer {
-    display: flex;
-    flex-direction: column;
+    @include flexColumn;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: $hundredWidth;
     border: 1px solid;
 }
 .myImages {
-    width: 100%;
-    // border: 2px solid pink;
-}
-
-.postHeaderPic {
-    
+    width: $hundredWidth;
 }

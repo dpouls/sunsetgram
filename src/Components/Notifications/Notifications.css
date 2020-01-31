@@ -1,0 +1,72 @@
+#notification_page {
+  width: 100%;
+}
+
+.notificationContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  min-height: 9vh;
+  padding: 0 10px;
+  border-bottom: 2px solid #d6d6d6;
+}
+
+.message {
+  margin-left: 5px;
+  width: 65%;
+  min-height: 6vh;
+  font-size: 15pt;
+  overflow-wrap: break-word;
+}
+
+.senderProfPic {
+  height: 6vh;
+  width: 6vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.postThumbnail {
+  width: 6vh;
+  height: 6vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#followBtn {
+  background-color: rgba(43, 153, 243, 0.753);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+#followBtn:hover {
+  background-color: #3598e9;
+}
+
+#followBtn:focus {
+  outline: none;
+}
+
+#unfollowBtn {
+  background-color: rgba(255, 255, 255, 0.753);
+  border-radius: 5px;
+  border: 1px solid #dadada;
+  color: #1d1d1d;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+#unfollowBtn:focus {
+  outline: none;
+}
+/*# sourceMappingURL=Notifications.css.map */

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import { connect } from "react-redux";
 import { getAllPosts } from "./../../redux/postReducer";
 import axios from "axios";
@@ -15,7 +15,10 @@ const Notifications = props => {
   const getNotifications = () => {
     axios.get("/api/mynotifications").then(res => setNotifications(res.data));
   }
+  useEffect(() => {
   getNotifications()
+
+  },[])
 
   return (
     <div id='notification_page'>

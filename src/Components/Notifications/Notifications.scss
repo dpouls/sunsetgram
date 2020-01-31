@@ -1,14 +1,15 @@
+@import '../../variables.scss';
+
 #notification_page {
-    width: 100%;
+    width: $hundredWidth;
 }
 .notificationContainer {
-    display: flex;
+    @include flexRow;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    width: $hundredWidth;
     min-height: 9vh;
     padding: 0 10px;
-    // background-color: lightblue;
     border-bottom: 2px solid rgb(214, 214, 214);
 
 }
@@ -17,9 +18,7 @@
     width: 65%;
     min-height: 6vh;
     font-size: 15pt;
-    // background-color: lightblue;
     overflow-wrap: break-word;
-    
 }
 .senderProfPic {
     height: 6vh;
@@ -35,13 +34,13 @@
 }
 
 #followBtn{
-    background-color: rgba(43, 153, 243, 0.753);
+    background-color: $buttonColor;
     border-radius: 5px;
     border: none;
     color: white;
       transition: background-color .5s ;
     &:hover {
-      background-color: rgb(53, 152, 233)
+      background-color: $buttonHoverColor;
     }
     &:focus {
       outline: none;

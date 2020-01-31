@@ -1,0 +1,96 @@
+#title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 10vh;
+}
+
+#authContainer {
+  margin-top: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80vh;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.loginInputContainer {
+  height: 15vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loginInputContainer .loginInputs {
+  width: 90%;
+  font-size: 15pt;
+  background-color: rgba(161, 161, 161, 0.253);
+  border-radius: 10px;
+  border: 1px solid rgba(155, 155, 155, 0.377);
+  padding: 8px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: ease .5s;
+  transition: ease .5s;
+}
+
+.loginInputContainer .loginInputs:focus {
+  outline: none;
+}
+
+.loginButton {
+  background-color: rgba(53, 152, 233, 0.493);
+  width: 90%;
+  padding: 10px;
+  margin: 0 30px;
+  font-size: 15pt;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+.loginButton:hover {
+  background-color: #3598e9;
+}
+
+.loginButton:focus {
+  outline: none;
+}
+
+#registerContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: grey;
+}
+
+#registerContainer #signUp {
+  color: #3599E9;
+  margin-left: .5em;
+}
+
+#haveAccount {
+  color: #3599E9;
+}
+/*# sourceMappingURL=Auth.css.map */
