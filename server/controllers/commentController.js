@@ -1,6 +1,6 @@
 module.exports = {
     getAllComments: (req,res) => {
-        const {post_id} = req. params
+        const {post_id} = req.params
         const db = req.app.get('db')
         db.post.comments.get_all_comments(post_id)
         .then(comments => res.status(200).send(comments))
